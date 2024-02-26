@@ -1,0 +1,7 @@
+Adafruit-DHT==1.4.0
+colorzero==2.0
+gpiozero==2.0.1
+importlib-metadata==4.13.0
+importlib-resources==5.13.0
+paho-mqtt==2.0.0
+zipp==3.17.0
