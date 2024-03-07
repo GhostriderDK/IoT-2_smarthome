@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/azureuser/iot2/venv"
+VIRTUAL_ENV="/home/azureuser/IoT-2_smarthome/AzureVM/flask_app/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
