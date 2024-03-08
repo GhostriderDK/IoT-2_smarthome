@@ -1,56 +1,20 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
     <style>
-.pie {
-  --p:20;      /* the percentage */
-  --b:22px;    /* the thickness */
-  --c:darkred; /* the color */
-  --w:150px;   /* the size*/
+      .box {
   
-  width:var(--w);
-  aspect-ratio:1/1;
-  position:relative;
-  display:inline-grid;
-  margin:5px;
-  place-content:center;
-  font-size:25px;
-  font-weight:bold;
-  font-family:sans-serif;
-}
-.pie:before,
-.pie:after {
-  content:"";
-  position:absolute;
-  border-radius:50%;
-}
-.pie:before {
-  inset:0;
-  background:
-    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
-  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-}
-.pie:after {
-  inset:calc(50% - var(--b)/2);
-  background:var(--c);
-  transform:rotate(calc(var(--p)*3.6deg - 90deg)) translate(calc(var(--w)/2 - 50%));
-}
-.animate {
-  animation:p 1s .5s both;
-}
-.no-round:before {
-  background-size:0 0,auto;
-}
-.no-round:after {
-  content:none;
-}
-@keyframes p{
-  from{--p:0;}
-}
+  --v:calc( ((18/5) * var(--p) - 90)*1deg);
 
-body {
-  background:#ddd;
+  width:100px;
+  height:100px;
+  display:inline-block;
+  border-radius:50%;
+  padding:10px;
+  background:
+    linear-gradient(#ccc,#ccc) content-box,
+    linear-gradient(var(--v), #f2f2f2     50%,transparent 0) 0/min(100%,(50 - var(--p))*100%),
+    linear-gradient(var(--v), transparent 50%,blue        0) 0/min(100%,(var(--p) - 50)*100%),
+    linear-gradient(to right, #f2f2f2 50%,blue 0);
 }
     </style>
   <head>
