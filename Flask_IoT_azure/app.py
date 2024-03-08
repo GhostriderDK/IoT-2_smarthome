@@ -71,12 +71,12 @@ def kokken():
 
 @app.route('/taend/', methods=['POST'])
 def taend():
-    publish.single("LED", "taend", hostname="74.234.16.65")
+    publish.single("LED", "taend", hostname="127.0.0.1")
     return render_template('kokken.html')
 
 @app.route('/sluk/', methods=['POST'])
 def sluk():
-    publish.single("LED", "sluk", hostname="74.234.16.65")
+    publish.single("LED", "sluk", hostname="127.0.0.1")
     return render_template('kokken.html')
 
 app.run(debug=True)

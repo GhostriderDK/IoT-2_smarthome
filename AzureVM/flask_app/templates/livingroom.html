@@ -1,6 +1,11 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block content %}
-    <h1>{% block title %} Stue dashboard {% endblock %}</h1>
-    <p>Hello World!</p>
+{% block title %} Stue Dash {% endblock %}
+{% block content %} 
+<meta http-equiv="refresh" content="5">
+<div class="container-fluid">
+<h1>Stue Dashboard</h1>
+<img class="img-fluid float-left" src='data:image/png;base64,{{stue_temperature}}'/>
+<img class="img-fluid float-right" src='data:image/png;base64,{{stue_humidity}}'/>
+</div>
 {% endblock %}
