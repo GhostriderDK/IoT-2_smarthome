@@ -85,3 +85,7 @@ def taend():
 def sluk():
     publish.single("LED", "sluk", hostname="localhost")
     return render_template('kitchen.html')
+
+@app.route('/F_U')
+def f_u():
+    return render_template('FuckJer.html')

@@ -69,10 +69,6 @@ def kokken():
 
     return render_template('kokken.html')
 
-@app.route('/F_U')
-def f_u():
-    return render_template('FuckJer.html')
-
 @app.route('/taend/', methods=['POST'])
 def taend():
     publish.single("LED", "taend", hostname="127.0.0.1")
