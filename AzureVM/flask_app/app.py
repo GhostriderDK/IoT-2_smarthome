@@ -78,10 +78,10 @@ def livingroom():
 
 @app.route('/taend/', methods=['POST'])
 def taend():
-    publish.single("LED", "taend", hostname="localhost")
+    publish.single("LED", "taend", hostname="52.236.38.161")
     return render_template('kitchen.html')
 
 @app.route('/sluk/', methods=['POST'])
 def sluk():
-    publish.single("LED", "sluk", hostname="localhost")
+    publish.single("LED", "sluk", hostname="52.236.38.161")
     return render_template('kitchen.html')
