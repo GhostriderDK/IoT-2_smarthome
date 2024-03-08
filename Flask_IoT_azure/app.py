@@ -71,7 +71,7 @@ def kokken():
 
 @app.route('/F_U')
 def f_u():
-    
+    return render_template('FuckJer.html')
 
 @app.route('/taend/', methods=['POST'])
 def taend():
