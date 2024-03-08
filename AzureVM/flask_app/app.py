@@ -78,10 +78,10 @@ def livingroom():
 
 @app.route('/taend/', methods=['POST'])
 def taend():
-    publish.single("LED", "taend", hostname="iot2.northeurope.cloudapp.azure.com")
+    publish.single("LED", "taend", hostname="localhost")
     return render_template('kitchen.html')
 
 @app.route('/sluk/', methods=['POST'])
 def sluk():
-    publish.single("LED", "sluk", hostname="iot2.northeurope.cloudapp.azure.com")
+    publish.single("LED", "sluk", hostname="localhost")
     return render_template('kitchen.html')
