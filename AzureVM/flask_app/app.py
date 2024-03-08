@@ -63,6 +63,15 @@ def home():
 
 @app.route('/mqtt')
 def mqtt():
+    #esp1_bat_stat = bat_stat_1()
+    #esp2_bat_stat = bat_stat_2()
+    #esp3_bat_stat = bat_stat_3()
+    #esp4_bat_stat = bat_stat_4()
+    #hum1 = hum()
+    #temp1 = temp()
+    #fire_status = fire()
+    #particle_count = part_count()
+    #co2 = co_2()
     return render_template('mqtt.html')
 
 
