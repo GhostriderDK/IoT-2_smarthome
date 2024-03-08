@@ -1,6 +1,101 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+    <style>
+.pie {
+  --p:20;      /* the percentage */
+  --b:22px;    /* the thickness */
+  --c:darkred; /* the color */
+  --w:150px;   /* the size*/
+  
+  width:var(--w);
+  aspect-ratio:1/1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg - 90deg)) translate(calc(var(--w)/2 - 50%));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p{
+  from{--p:0;}
+}
 
-{% block content %}
-    <h1>{% block title %} Smarthub site {% endblock %}</h1>
-    <p>yummy data</p>
-{% endblock %}
+body {
+  background:#ddd;
+}
+    </style>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title> - FlaskApp</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}"> KEA  IoT2 </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('mqtt') }}">mqtt</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('kitchen') }}">Køkken</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('livingroom')}}">Stue</a>
+            </li>
+
+        </ul>
+        </div>
+    </div>
+    </nav>
+    <div class="container">
+        
+    </div>
+
+    <!-- Optional JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  </body>
+</html>
