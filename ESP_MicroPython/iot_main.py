@@ -1,9 +1,13 @@
 from mqtt_as import MQTTClient, config
 import asyncio
+from machine import I2C, Pin
 
 ####  Sensors  ####
+i2c = I2C(1, scl=Pin(19), sda=Pin(18), freq=400000)
+import ens160
+ens160_tvoc = ens160.init(i2c)
 import iot_scd40
-scd40 = iot_scd40.init()
+scd40 = iot_scd40.init(i2c)
 
 # Local configuration
 config['server'] = '52.236.38.161'  # Change to suit
@@ -45,6 +49,7 @@ async def main(client):
         await client.publish('sensor/scd40/co2', str(sensor_data["co2"]), qos = 1)
         await client.publish('sensor/scd40/temp', str(sensor_data["temp"]), qos = 1)
         await client.publish('sensor/scd40/rh', str(sensor_data["rh"]), qos = 1)
+        await client.publish('sensor/ens160/tvoc', ens160.read(ens160_tvoc), qos = 1)
 
 
 config["queue_len"] = 1  # Use event interface with default queue size
