@@ -57,7 +57,7 @@ def stue_hum():
 
 def bat_stat_1():
     fig = Figure()
-    fig.style.use('_mpl-gallery-nogrid')
+    
 
 
     # make data
