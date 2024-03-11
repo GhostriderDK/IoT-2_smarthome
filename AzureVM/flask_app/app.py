@@ -55,6 +55,28 @@ def stue_hum():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
+def bat_stat_1():
+    fig = Figure()
+    
+
+
+    # make data
+    x = [1, 2, 3, 4]
+    colors = fig.get_cmap('Blues')(np.linspace(0.2, 0.7, len(x)))
+
+    # plot
+    ax = fig.subplots()
+    ax.pie(x, colors=colors, radius=3, center=(4, 4),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
+
+    ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+           ylim=(0, 8), yticks=np.arange(1, 8))
+    
+    buf2 = BytesIO()
+    fig.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data1 = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data1
     
 
 
@@ -64,7 +86,7 @@ def home():
 
 @app.route('/mqtt')
 def mqtt():
-    #esp1_bat_stat = bat_stat_1()
+    esp1_bat_stat = bat_stat_1()
     #esp2_bat_stat = bat_stat_2()
     #esp3_bat_stat = bat_stat_3()
     #esp4_bat_stat = bat_stat_4()
@@ -73,7 +95,7 @@ def mqtt():
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html')
+    return render_template('mqtt.html', esp1_bat_stat=esp1_bat_stat)
 
 
 @app.route('/kitchen')
