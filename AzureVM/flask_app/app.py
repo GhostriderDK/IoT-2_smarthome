@@ -95,7 +95,7 @@ def mqtt():
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp1_bat_stat=bat_stat_1)
+    return render_template('mqtt.html', esp1_bat_stat=esp1_bat_stat)
 
 
 @app.route('/kitchen')
