@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} Stue Dash {% endblock %}
+{% block content %} 
+<div class="container-fluid">
+<h1>Køkken Dashboard</h1>
+<div class="input-group mb-3">
+<form action="/taend/" method="POST"><button class="btn btn-outline-secondary">tænd led</button></form>
+<form action="/sluk/" method="POST"><button class="btn btn-outline-secondary">sluk led</button></form>
+</div>
+</div>
+{% endblock %}

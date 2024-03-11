@@ -46,4 +46,4 @@ def on_message_print(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(on_message_print, "paho/test/topic", hostname="74.234.16.65", userdata={"message_count": 0})
+subscribe.callback(on_message_print, "paho/test/topic", hostname="localhost", userdata={"message_count": 0})
