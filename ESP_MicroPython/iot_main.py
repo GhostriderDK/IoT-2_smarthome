@@ -34,18 +34,18 @@ async def main(client):
     
     for coroutine in (up, messages):
         asyncio.create_task(coroutine(client))
-    n = 0
+
     while True:
         await asyncio.sleep(10)
-        print('publish', n)
         sensor_data = iot_scd40.read(scd40)
-        print(sensor_data)
+        print('Publish', sensor_data)
         # If WiFi is down the following will pause for the duration.
+        # Lidt spild at sende individuelt, så vi skal beslutte os om at sende én gang
         await client.publish('sensor/scd40/all', str(sensor_data), qos = 1)
-        await client.publish('sensor/scd40/co2', sensor_data["co2"], qos = 1)
-        await client.publish('sensor/scd40/temp', sensor_data["temp"], qos = 1)
-        await client.publish('sensor/scd40/rh', sensor_data["rh"], qos = 1)
-        n += 1
+        await client.publish('sensor/scd40/co2', str(sensor_data["co2"]), qos = 1)
+        await client.publish('sensor/scd40/temp', str(sensor_data["temp"]), qos = 1)
+        await client.publish('sensor/scd40/rh', str(sensor_data["rh"]), qos = 1)
+
 
 config["queue_len"] = 1  # Use event interface with default queue size
 MQTTClient.DEBUG = True  # Optional: print diagnostic messages
