@@ -59,7 +59,7 @@ def bat_stat_1():
     fig = Figure()
     
     # make data
-    x = [1, 2, 3, 4]
+    x = [60]
     
 
     # plot
