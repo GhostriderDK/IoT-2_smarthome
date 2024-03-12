@@ -65,10 +65,11 @@ def bat_stat_1():
 
     # plot
     ax = fig.subplots()
-    ax.pie(x, radius=3, center=(4, 4),
+    ax.pie(x, radius=1, center=(2, 2),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
        colors=['Green', 'Red'])
 
+   
     
     buf2 = BytesIO()
     fig.savefig(buf2, format="png")
