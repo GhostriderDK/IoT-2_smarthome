@@ -59,7 +59,8 @@ def bat_stat_1():
     fig = Figure()
     
     # make data
-    x = [60]
+    measurement = 60
+    x = [measurement, 100-measurement]
     
 
     # plot
