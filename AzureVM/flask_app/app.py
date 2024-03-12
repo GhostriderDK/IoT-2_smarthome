@@ -58,11 +58,9 @@ def stue_hum():
 def bat_stat_1():
     fig = Figure()
     
-
-
     # make data
     x = [1, 2, 3, 4]
-    colors = fig.get_cmap('Blues')(np.linspace(0.2, 0.7, len(x)))
+    
 
     # plot
     ax = fig.subplots()
