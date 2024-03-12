@@ -67,7 +67,7 @@ def bat_stat_1():
     ax = fig.subplots()
     ax.pie(x, radius=1, center=(2, 2),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'])
+       colors=['Green', 'Red'], autopct='%1.1f%%')
 
    
     
