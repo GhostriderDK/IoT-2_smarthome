@@ -3,7 +3,7 @@ from io import BytesIO
 from datetime import datetime
 from matplotlib.figure import Figure
 from flask import Flask, render_template
-from get_stue_dht11_data import get_stue_data
+from get_stue_dht11_data import *
 import paho.mqtt.publish as publish
 
 app = Flask(__name__)
@@ -57,26 +57,22 @@ def stue_hum():
 
 def bat_stat_1():
     fig = Figure()
-    
-
-
     # make data
-    x = [1, 2, 3, 4]
-    colors = fig.get_cmap('Blues')(np.linspace(0.2, 0.7, len(x)))
-
+    measurement = 75
+    x = [measurement, 100-measurement]
     # plot
     ax = fig.subplots()
-    ax.pie(x, colors=colors, radius=3, center=(4, 4),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
-
-    ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-           ylim=(0, 8), yticks=np.arange(1, 8))
-    
+    ax.pie(x, radius=1, center=(2, 2),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+       colors=['Green', 'Red'], autopct='%1.1f%%') 
     buf2 = BytesIO()
-    fig.savefig(buf, format="png")
+    fig.savefig(buf2, format="png")
     # Embed the result in the html output.
-    data1 = base64.b64encode(buf.getbuffer()).decode("ascii")
+    data1 = base64.b64encode(buf2.getbuffer()).decode("ascii")
     return data1
+
+def bat_stat_2():
+    pass
     
 
 
