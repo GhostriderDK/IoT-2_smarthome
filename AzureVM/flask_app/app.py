@@ -65,18 +65,24 @@ def bat_stat_1():
     esp4 = [measurement, 100-measurement]
     # plot
     ax = fig.subplots(2, 2)
-    ax.pie(esp1, radius=1, center=(2, 2),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'], autopct='%1.1f%%', startangle = 270)    
-    ax.pie(esp2, radius=1, center=(2, 2),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'], autopct='%1.1f%%') 
-    ax.pie(esp3, radius=1, center=(2, 2),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'], autopct='%1.1f%%') 
-    ax.pie(esp4, radius=1, center=(2, 2),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    
+    # Select a specific Axes object
+    ax[0, 0].pie(esp1, radius=1, center=(2, 2),
+                wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+                colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    
+    # Repeat for other subplots...
+    ax[0, 0].pie(esp1, radius=1, center=(2, 2),
+                wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+                colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    ax[0, 0].pie(esp1, radius=1, center=(2, 2),
+                wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+                colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    ax[0, 0].pie(esp1, radius=1, center=(2, 2),
+                wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+                colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+
+
     buf = BytesIO()
     fig.savefig(buf, format="png")
     # Embed the result in the html output.
