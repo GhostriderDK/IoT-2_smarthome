@@ -59,10 +59,25 @@ def bat_stat_1():
     fig = Figure()
     # make data
     measurement = 75
-    x = [measurement, 100-measurement]
+    esp1 = [measurement, 100-measurement]
+    esp2 = [measurement, 100-measurement]
+    esp3 = [measurement, 100-measurement]
+    esp4 = [measurement, 100-measurement]
     # plot
     ax = fig.subplots()
-    ax.pie(x, radius=1, center=(2, 2),
+    bx = fig.subplots()
+    cx = fig.subplots()
+    dx = fig.subplots()
+    ax.pie(esp1, radius=1, center=(2, 2),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    bx.pie(esp2, radius=1, center=(2, 2),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    cx.pie(esp3, radius=1, center=(2, 2),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    dx.pie(esp4, radius=1, center=(2, 2),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
        colors=['Green', 'Red'], autopct='%1.1f%%') 
     buf = BytesIO()
