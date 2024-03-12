@@ -66,7 +66,8 @@ def bat_stat_1():
     # plot
     ax = fig.subplots()
     ax.pie(x, radius=3, center=(4, 4),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, sizes, labels=labels,
+       colors=['olivedrab', 'rosybrown', 'gray', 'saddlebrown'])
 
     ax.set(xlim=(0, 8), xticks=(0,8),
            ylim=(0, 8), yticks=(0,8))
