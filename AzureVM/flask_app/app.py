@@ -72,13 +72,13 @@ def bat_stat_1():
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
     
     # Repeat for other subplots...
-    ax[0, 0].pie(esp2, radius=1, center=(2, 2),
+    ax[0, 1].pie(esp2, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
-    ax[0, 0].pie(esp3, radius=1, center=(2, 2),
+    ax[1, 0].pie(esp3, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
-    ax[0, 0].pie(esp4, radius=1, center=(2, 2),
+    ax[1, 1].pie(esp4, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
 
