@@ -65,7 +65,7 @@ def bat_stat_1():
 
     # plot
     ax = fig.subplots()
-    ax.pie(sizes, labels=labels,
+    ax.pie(x, labels=['Batteriniveau', 'brugt'],
        colors=['Green', 'Red'])
 
     ax.set(xlim=(0, 8), xticks=(0,8),
