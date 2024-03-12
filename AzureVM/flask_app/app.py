@@ -69,8 +69,6 @@ def bat_stat_1():
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
        colors=['Green', 'Red'])
 
-    ax.set(xlim=(0, 8), xticks=(0,8),
-           ylim=(0, 8), yticks=(0,8))
     
     buf2 = BytesIO()
     fig.savefig(buf2, format="png")
