@@ -65,14 +65,27 @@ def bat_stat_1():
     ax.pie(x, radius=1, center=(2, 2),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
        colors=['Green', 'Red'], autopct='%1.1f%%') 
-    buf2 = BytesIO()
-    fig.savefig(buf2, format="png")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
     # Embed the result in the html output.
-    data1 = base64.b64encode(buf2.getbuffer()).decode("ascii")
-    return data1
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
 
 def bat_stat_2():
-    pass
+    fig = Figure()
+    # make data
+    measurement = 75
+    x = [measurement, 100-measurement]
+    # plot
+    ax = fig.subplots()
+    ax.pie(x, radius=1, center=(2, 2),
+           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
+       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
     
 
 
@@ -83,7 +96,7 @@ def home():
 @app.route('/mqtt')
 def mqtt():
     esp1_bat_stat = bat_stat_1()
-    #esp2_bat_stat = bat_stat_2()
+    esp2_bat_stat = bat_stat_2()
     #esp3_bat_stat = bat_stat_3()
     #esp4_bat_stat = bat_stat_4()
     #hum1 = hum()
@@ -91,7 +104,7 @@ def mqtt():
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp1_bat_stat=esp1_bat_stat)
+    return render_template('mqtt.html', esp1_bat_stat=esp1_bat_stat, esp2_bat_stat=esp2_bat_stat)
 
 
 @app.route('/kitchen')
