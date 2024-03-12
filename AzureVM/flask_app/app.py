@@ -71,7 +71,8 @@ def bat_stat_1():
     data1 = base64.b64encode(buf2.getbuffer()).decode("ascii")
     return data1
 
-def bat_stat_2()
+def bat_stat_2():
+    pass
     
 
 
