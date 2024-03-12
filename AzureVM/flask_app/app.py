@@ -64,10 +64,7 @@ def bat_stat_1():
     esp3 = [measurement, 100-measurement]
     esp4 = [measurement, 100-measurement]
     # plot
-    ax = fig.subplots()
-    bx = fig.subplots()
-    cx = fig.subplots()
-    dx = fig.subplots()
+    ax, bx, cx, dx = fig.subplots()    
     ax.pie(esp1, radius=1, center=(2, 2),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
        colors=['Green', 'Red'], autopct='%1.1f%%') 
