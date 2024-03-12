@@ -65,27 +65,27 @@ def bat_stat_1():
     esp4 = [measurement, 100-measurement]
     # plot
     ax = fig.subplots(2, 2)
-    
-    # Select a specific Axes object
+
     ax[0, 0].pie(esp1, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
-    
-    # Repeat for other subplots...
+    ax[0, 0].set_title("ESP1")
     ax[0, 1].pie(esp2, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    ax[0, 1].set_title("ESP2")
     ax[1, 0].pie(esp3, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    ax[1, 0].set_title("ESP3")
     ax[1, 1].pie(esp4, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.1f%%', startangle=270)
+    ax[1, 1].set_title("ESP4")
 
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
