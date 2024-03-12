@@ -71,7 +71,7 @@ def bat_stat_1():
            ylim=(0, 8), yticks=(1, 8))
     
     buf2 = BytesIO()
-    fig.savefig(buf, format="png")
+    fig.savefig(buf2, format="png")
     # Embed the result in the html output.
     data1 = base64.b64encode(buf2.getbuffer()).decode("ascii")
     return data1
