@@ -67,8 +67,8 @@ def bat_stat_1():
     ax.pie(x, radius=3, center=(4, 4),
            wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
 
-    ax.set(xlim=(0, 8), xticks=(1, 8),
-           ylim=(0, 8), yticks=(1, 8))
+    ax.set(xlim=(0, 8), xticks=None,
+           ylim=(0, 8), yticks=None)
     
     buf2 = BytesIO()
     fig.savefig(buf2, format="png")
