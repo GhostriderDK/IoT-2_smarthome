@@ -2,7 +2,7 @@ import base64
 from io import BytesIO
 from datetime import datetime
 from matplotlib.figure import Figure
-
+from matplotlib import cm
 from flask import Flask, render_template
 from get_stue_dht11_data import *
 import paho.mqtt.publish as publish
