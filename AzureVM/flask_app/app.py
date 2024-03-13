@@ -97,7 +97,7 @@ def humidity_realtime():
     hum2 = [measurement]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
-    colormap = cm.get_cmap('GnYlRd')
+    colormap = cm.get_cmap('RdYlGn', 100)
     norm = cm.colors.Normalize(vmin=0, vmax=100)
 
     ax1.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7, color=colormap(norm(hum1)))
