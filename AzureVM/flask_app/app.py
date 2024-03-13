@@ -69,19 +69,19 @@ def bat_stat():
 
     ax[0, 0].pie(esp1, radius=1, center=(2, 2),
                 wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1f%%', startangle=270)
+                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax[0, 0].set_title("ESP1")
     ax[0, 1].pie(esp2, radius=1, center=(2, 2),
                 frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1f%%', startangle=270)
+                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax[0, 1].set_title("ESP2")
     ax[1, 0].pie(esp3, radius=1, center=(2, 2),
                 frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1f%%', startangle=270)
+                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax[1, 0].set_title("ESP3")
     ax[1, 1].pie(esp4, radius=1, center=(2, 2),
                 frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1f%%', startangle=270)
+                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax[1, 1].set_title("ESP4")
 
 
@@ -99,13 +99,13 @@ def humidity_realtime():
     ax1, ax2 = fig.subplots(2, 1)
 
     ax1.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7)
-    ax1.set(xlim=(0, 8), xticks=list(range(1, 8)),
-            ylim=(0, 8), yticks=list(range(1, 8)))
+    ax1.set(xlim=(0, 8), xticks=list(range(1, 1)),
+            ylim=(0, 8), yticks=list(range(1, 1)))
     ax1.set_title("Humidity 1")
 
     ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7)
-    ax2.set(xlim=(0, 8), xticks=list(range(1, 8)),
-            ylim=(0, 8), yticks=list(range(1, 8)))
+    ax2.set(xlim=(0, 8), xticks=list(range(1, 1)),
+            ylim=(0, 8), yticks=list(range(1, 1)))
     ax2.set_title("Humidity 2")
 
     buf = BytesIO()
