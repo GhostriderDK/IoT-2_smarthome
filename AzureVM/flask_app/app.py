@@ -115,12 +115,12 @@ def home():
 @app.route('/mqtt')
 def mqtt():
     esp_bat_stat = bat_stat()
-    #hum1 = hum()
+    humidity = humidity_realtime()
     #temp1 = temp()
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat)
+    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity)
 
 
 @app.route('/kitchen')
