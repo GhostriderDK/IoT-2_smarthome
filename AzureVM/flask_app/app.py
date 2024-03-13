@@ -55,7 +55,7 @@ def stue_hum():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-def bat_stat_1():
+def bat_stat():
     fig = Figure()
     # make data
     measurement = 75
@@ -89,22 +89,23 @@ def bat_stat_1():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-def bat_stat_2():
+def humidity_realtime():
     fig = Figure()
-    # make data
-    measurement = 75
-    x = [measurement, 100-measurement]
-    # plot
-    ax = fig.subplots()
-    ax.pie(x, radius=1, center=(2, 2),
-           wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False, labels=['tilbage', 'brugt'],
-       colors=['Green', 'Red'], autopct='%1.1f%%') 
+    measurement = 45
+    hum1 = [measurement, 100-measurement]
+    hum2 = [measurement, 100-measurement]
+
+    ax = fig.subplots(2, 0)
+
+    ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+
+    ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+            ylim=(0, 8), yticks=np.arange(1, 8))
+
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
-    
 
 
 @app.route('/')
@@ -113,16 +114,13 @@ def home():
 
 @app.route('/mqtt')
 def mqtt():
-    esp1_bat_stat = bat_stat_1()
-    esp2_bat_stat = bat_stat_2()
-    #esp3_bat_stat = bat_stat_3()
-    #esp4_bat_stat = bat_stat_4()
+    esp_bat_stat = bat_stat()
     #hum1 = hum()
     #temp1 = temp()
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp1_bat_stat=esp1_bat_stat, esp2_bat_stat=esp2_bat_stat)
+    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat)
 
 
 @app.route('/kitchen')
