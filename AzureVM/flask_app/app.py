@@ -3,6 +3,7 @@ from io import BytesIO
 from datetime import datetime
 from matplotlib.figure import Figure
 from matplotlib import cm
+import matplotlib.colors as mcolors
 from flask import Flask, render_template
 from get_stue_dht11_data import *
 import paho.mqtt.publish as publish
@@ -105,7 +106,7 @@ def humidity_realtime():
             ylim=(0, 4), yticks=list(range(0, 101, 10)))
     ax1.set_title("Humidity 1")
 
-    ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum2))
+    ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 10)))
     ax2.set_title("Humidity 2")
