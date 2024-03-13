@@ -93,7 +93,7 @@ def bat_stat():
 
 def humidity_realtime():
     fig = Figure(figsize=(3,5))
-    measurement = 65
+    measurement = 100
     hum1 = [measurement]
     hum2 = [measurement]
     x = 1
