@@ -95,12 +95,17 @@ def humidity_realtime():
     hum1 = [measurement]
     hum2 = [measurement]
     x = 1
-    ax = fig.subplots(2, 1)
+    ax1, ax2 = fig.subplots(2, 1)
 
-    ax.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7)
-
-    ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+    ax1.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7)
+    ax1.set(xlim=(0, 8), xticks=np.arange(1, 8),
             ylim=(0, 8), yticks=np.arange(1, 8))
+    ax1.set_title("Humidity 1")
+
+    ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7)
+    ax2.set(xlim=(0, 8), xticks=np.arange(1, 8),
+            ylim=(0, 8), yticks=np.arange(1, 8))
+    ax2.set_title("Humidity 2")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
