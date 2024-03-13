@@ -92,12 +92,12 @@ def bat_stat():
 def humidity_realtime():
     fig = Figure()
     measurement = 45
-    hum1 = [measurement, 100-measurement]
-    hum2 = [measurement, 100-measurement]
-
+    hum1 = [measurement]
+    hum2 = [measurement]
+    x = 1
     ax = fig.subplots(2, 1)
 
-    ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+    ax.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7)
 
     ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
             ylim=(0, 8), yticks=np.arange(1, 8))
