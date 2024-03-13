@@ -95,7 +95,7 @@ def humidity_realtime():
     hum1 = [measurement, 100-measurement]
     hum2 = [measurement, 100-measurement]
 
-    ax = fig.subplots(2, 0)
+    ax = fig.subplots(2, 1)
 
     ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
 
