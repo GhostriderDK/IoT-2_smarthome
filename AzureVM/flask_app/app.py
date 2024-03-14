@@ -131,13 +131,14 @@ def temp_realtime():
     return data
 
 def Tvoc_co2_real():
-    fig = Figure(figsize=(4,5))
+    fig = Figure(figsize=(3,5))
     measurement = 18
     tvoc = [measurement]
     co2 = [measurement]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
     
+    fig.subplots_adjust(left=0.8, right=0.1)
 
     ax1.bar(x, tvoc, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
