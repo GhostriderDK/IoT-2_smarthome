@@ -32,7 +32,7 @@ def on_message_print(client, userdata, message):
     data = (now, dht11_data['temperature'], dht11_data['humidity'])
     
 
-    try:
+    try:                        # database location and file
         conn = sqlite3.connect("database/sensor_data.db")
         cur = conn.cursor()
         cur.execute(query, data)
@@ -46,4 +46,4 @@ def on_message_print(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(on_message_print, "paho/test/topic", hostname="localhost", userdata={"message_count": 0})
+subscribe.callback(on_message_print, "[whatever subject]", hostname="localhost", userdata={"message_count": 0})
