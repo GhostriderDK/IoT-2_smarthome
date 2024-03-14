@@ -65,11 +65,11 @@ def bat_stat():
     
     ax1, ax2 = fig.subplots(2, 1)
 
-    ax1.pie(esp1, radius=1, center=(2, 2),
+    ax1.pie(esp1, radius=1, center=(0.5, 0.5),
                 frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax1.set_title("ESP1")
-    ax2.pie(esp2, radius=1, center=(2, 2),
+    ax2.pie(esp2, radius=1, center=(0.5, 0.5),
                 frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax2.set_title("ESP2")
