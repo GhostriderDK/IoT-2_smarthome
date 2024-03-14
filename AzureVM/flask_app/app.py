@@ -132,7 +132,7 @@ def temp_realtime():
 
     ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
-            ylim=(0, 4), yticks=list(range(0, 101, 10)))
+            ylim=(0, 4), yticks=list(range(10, 41, 10)))
     ax2.set_title("Temperature 2")
 
     buf = BytesIO()
