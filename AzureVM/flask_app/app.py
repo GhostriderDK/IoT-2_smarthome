@@ -150,7 +150,7 @@ def Tvoc_co2_real():
 
     ax2.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
-            ylim=(0, 4), yticks=list(range(0, 65000, 5000)))
+            ylim=(0, 4), yticks=list(range(0, 65000, 10000)))
     ax2.set_title("CO2")
 
     buf = BytesIO()
