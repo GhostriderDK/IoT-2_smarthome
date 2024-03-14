@@ -59,31 +59,21 @@ def stue_hum():
 
 def bat_stat():
     fig = Figure()
-    # make data
     measurement = 75
     esp1 = [measurement, 100-measurement]
     esp2 = [measurement, 100-measurement]
-    esp3 = [measurement, 100-measurement]
-    esp4 = [measurement, 100-measurement]
-    # plot
-    ax = fig.subplots(2, 2)
+    
+    ax = fig.subplots(2, 1)
 
     ax[0, 0].pie(esp1, radius=1, center=(2, 2),
                 frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax[0, 0].set_title("ESP1")
-    ax[0, 1].pie(esp2, radius=1, center=(2, 2),
+    ax[1, 0].pie(esp2, radius=1, center=(2, 2),
                 frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
-    ax[0, 1].set_title("ESP2")
-    ax[1, 0].pie(esp3, radius=1, center=(2, 2),
-                frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
-    ax[1, 0].set_title("ESP3")
-    ax[1, 1].pie(esp4, radius=1, center=(2, 2),
-                frame=False, labels=['tilbage', 'brugt'],
-                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
-    ax[1, 1].set_title("ESP4")
+    ax[1, 0].set_title("ESP2")
+    
 
 
     buf = BytesIO()
