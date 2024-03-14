@@ -88,6 +88,8 @@ def humidity_realtime():
     hum2 = [measurement]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
+    fig.subplots_adjust(left=0.5, right=0.6)
+
     colors = [(0, 'green'), (0.5, 'yellow'), (1, 'red')]
     custom_cmap = mcolors.LinearSegmentedColormap.from_list('custom', colors)
 
@@ -113,7 +115,8 @@ def temp_realtime():
     temp2 = [measurement]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
-    
+
+    fig.subplots_adjust(left=0.5, right=0.6)   
 
     ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
