@@ -58,7 +58,7 @@ def stue_hum():
     return data
 
 def bat_stat():
-    fig = Figure()
+    fig = Figure(figsize=(4,4))
     measurement = 75
     esp1 = [measurement, 100-measurement]
     esp2 = [measurement, 100-measurement]
