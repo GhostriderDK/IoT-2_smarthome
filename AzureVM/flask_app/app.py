@@ -73,8 +73,6 @@ def bat_stat():
                 frame=False, labels=['tilbage', 'brugt'],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax2.set_title("ESP2")
-    
-
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
