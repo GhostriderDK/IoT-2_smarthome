@@ -140,6 +140,31 @@ def temp_realtime():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
+def Tvoc_co2_real():
+    fig = Figure(figsize=(3,5))
+    measurement = 18
+    tvoc = [measurement]
+    co2 = [measurement]
+    x = 1
+    ax1, ax2 = fig.subplots(2, 1)
+    
+
+    ax1.bar(x, tvoc, width=1, edgecolor="white", linewidth=0.7)
+    ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 10000, 1000)))
+    ax1.set_title("Tvoc")
+
+    ax2.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
+    ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 65000, 1000)))
+    ax2.set_title("CO2")
+
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
+
 
 @app.route('/')
 def home():
@@ -150,10 +175,11 @@ def mqtt():
     esp_bat_stat = bat_stat()
     humidity = humidity_realtime()
     temperature = temp_realtime()
-    #fire_status = fire()
+    Tvoc = Tvoc_co2_real()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, temperature=temperature)
+    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, temperature=temperature,
+                           Tvoc=Tvoc,)
 
 
 @app.route('/kitchen')
