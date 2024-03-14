@@ -118,7 +118,7 @@ def humidity_realtime():
 
 def temp_realtime():
     fig = Figure(figsize=(3,5))
-    measurement = 100
+    measurement = 18
     temp1 = [measurement]
     temp2 = [measurement]
     x = 1
