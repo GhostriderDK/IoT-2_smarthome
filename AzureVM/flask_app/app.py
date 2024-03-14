@@ -74,6 +74,8 @@ def bat_stat():
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax2.set_title("ESP2")
 
+    fig.tight_layout()
+
     buf = BytesIO()
     fig.savefig(buf, format="png")
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
