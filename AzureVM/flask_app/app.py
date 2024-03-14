@@ -131,7 +131,7 @@ def temp_realtime():
     return data
 
 def Tvoc_co2_real():
-    fig = Figure(figsize=(3,5))
+    fig = Figure(figsize=(4,5))
     measurement = 18
     tvoc = [measurement]
     co2 = [measurement]
