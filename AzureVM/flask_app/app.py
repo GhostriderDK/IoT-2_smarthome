@@ -123,15 +123,14 @@ def temp_realtime():
     temp2 = [measurement]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
-    colors = [(0, 'green'), (0.5, 'yellow'), (1, 'red')]
-    custom_cmap = mcolors.LinearSegmentedColormap.from_list('custom', colors)
+    
 
-    ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 10)))
     ax1.set_title("Temperature 1")
 
-    ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 10)))
     ax2.set_title("Temperature 2")
