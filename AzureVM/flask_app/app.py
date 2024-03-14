@@ -116,6 +116,31 @@ def humidity_realtime():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
+def temp_realtime():
+    fig = Figure(figsize=(3,5))
+    measurement = 100
+    temp1 = [measurement]
+    temp2 = [measurement]
+    x = 1
+    ax1, ax2 = fig.subplots(2, 1)
+    colors = [(0, 'green'), (0.5, 'yellow'), (1, 'red')]
+    custom_cmap = mcolors.LinearSegmentedColormap.from_list('custom', colors)
+
+    ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 101, 10)))
+    ax1.set_title("Temperature 1")
+
+    ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 101, 10)))
+    ax2.set_title("Temperature 2")
+
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
 
 @app.route('/')
 def home():
@@ -125,11 +150,11 @@ def home():
 def mqtt():
     esp_bat_stat = bat_stat()
     humidity = humidity_realtime()
-    #temp1 = temp()
+    temperature = temp_realtime()
     #fire_status = fire()
     #particle_count = part_count()
     #co2 = co_2()
-    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity)
+    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, temperature=temperature)
 
 
 @app.route('/kitchen')
