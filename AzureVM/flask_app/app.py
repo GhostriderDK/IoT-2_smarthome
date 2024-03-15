@@ -45,7 +45,7 @@ def stue_temp():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-def stue_data():
+def stue_data_co2_tvoc_part():
     timestamps, temp, hum, tvoc, part, co = get_stue_data(1)
     
     fig = Figure()
@@ -234,7 +234,7 @@ def kitchen():
 @app.route('/livingroom')
 def livingroom():
     stue_temperature = stue_temp()
-    stue_data = stue_data()
+    stue_data = stue_data_co2_tvoc_part()
     return render_template('livingroom.html', stue_temperature=stue_temperature, stue_data=stue_data)
 
 @app.route('/taend/', methods=['POST'])
