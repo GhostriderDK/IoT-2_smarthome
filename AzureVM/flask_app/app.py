@@ -88,7 +88,7 @@ def part_in_air():
     ax.set_facecolor("white")
     ax.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
     ax.set_xlabel("Timestamps")
-    ax.set_ylabel("particles in µ-gram pr m3")
+    ax.set_ylabel("particles in µ-gram pr m^3")
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
