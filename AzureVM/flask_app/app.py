@@ -259,7 +259,8 @@ def kitchen():
 def livingroom():
     stue_temperature = stue_temp()
     stue_data = stue_data_co2_tvoc_part()
-    return render_template('livingroom.html', stue_temperature=stue_temperature, stue_data=stue_data)
+    part = part_in_air()
+    return render_template('livingroom.html', stue_temperature=stue_temperature, stue_data=stue_data, part=part)
 
 @app.route('/taend/', methods=['POST'])
 def taend():
