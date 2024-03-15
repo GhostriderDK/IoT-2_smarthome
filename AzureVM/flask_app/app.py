@@ -76,6 +76,33 @@ def stue_data_co2_tvoc_part():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
+def part_in_air():
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
+    
+    fig = Figure()
+    ax = fig.subplots()
+    fig.subplots_adjust(bottom=0.3)
+    
+    ax = fig.add_subplot(2, 1, 2)
+    ax.tick_params(axis='x', which='both', rotation=90)
+    ax.set_facecolor("white")
+    ax.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax.set_xlabel("Timestamps")
+    ax.set_ylabel("particles in µ-gram pr m3")
+    ax.tick_params(axis="x", colors="black")
+    ax.tick_params(axis="y", colors="blue")
+    ax.spines["left"].set_color("blue")
+    fig.patch.set_facecolor("orange")
+    
+    
+    
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
+
 def bat_stat():
     timestamps, temp, hum, bat1 = get_bath_data(1)
     timestamps, temp, hum, bat2 = get_bedroom_data(1)
