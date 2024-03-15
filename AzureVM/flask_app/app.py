@@ -51,7 +51,7 @@ def stue_data_co2_tvoc_part():
     fig.subplots_adjust(bottom=0.3)
     ax1.set_facecolor("white")
     ax1.plot(timestamps, tvoc, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
-    ax1.set_ylabel("Total volatile organic compunds")
+    ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
     ax1.set_xticks([])  
