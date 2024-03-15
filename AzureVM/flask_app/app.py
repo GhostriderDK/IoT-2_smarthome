@@ -14,7 +14,7 @@ def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
    
     fig = Figure()
-    ax1, ax2 = fig.subplots()
+    
     
     ax1 = fig.add_subplot(2, 1, 1)
     ax1.tick_params(axis='x', which='both', rotation=30)
