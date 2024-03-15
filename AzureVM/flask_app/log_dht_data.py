@@ -7,9 +7,9 @@ print("subscribe mqtt script running")
 
 
 def create_table():
-    query = """CREATE TABLE IF NOT EXISTS stue (datetime TEXT NOT NULL, temperature REAL NOT NULL, humidity REAL NOT NULL);"""
+    query = """CREATE TABLE IF NOT EXISTS Bad (datetime TEXT NOT NULL, temperature REAL NOT NULL, humidity REAL NOT NULL);"""
     try:                        # database location and file
-        conn = sqlite3.connect("database/sensor_data.db")
+        conn = sqlite3.connect("database/data.db")
         cur = conn.cursor()
         cur.execute(query)
         conn.commit()

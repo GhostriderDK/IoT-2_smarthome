@@ -87,7 +87,7 @@ def humidity_realtime():
     hum1 = [measurement]
     hum2 = [measurement]
     x = 1
-    ax1, ax2 = fig.subplots(2, 1)
+    ax1, ax2, ax3 = fig.subplots(3, 1)
     fig.subplots_adjust(left=0.5, right=0.6)
 
     colors = [(0, 'green'), (0.5, 'yellow'), (1, 'red')]
@@ -102,6 +102,11 @@ def humidity_realtime():
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 10)))
     ax2.set_title("Humidity 2")
+    
+    ax3.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 101, 10)))
+    ax3.set_title("Humidity 3")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -114,7 +119,7 @@ def temp_realtime():
     temp1 = [measurement]
     temp2 = [measurement]
     x = 1
-    ax1, ax2 = fig.subplots(2, 1)
+    ax1, ax2, ax3 = fig.subplots(3, 1)
 
     fig.subplots_adjust(left=0.5, right=0.6)   
 
@@ -127,6 +132,11 @@ def temp_realtime():
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
     ax2.set_title("Temperature 2")
+
+    ax3.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
+    ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(10, 41, 10)))
+    ax3.set_title("Temperature 2")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
