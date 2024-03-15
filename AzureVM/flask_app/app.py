@@ -63,8 +63,8 @@ def bat_stat():
     
     fig = Figure(figsize=(4,4))
     
-    esp1 = [bat1, bat1 - 100]
-    esp2 = [bat2, bat2 - 100]
+    esp1 = [bat1, int(bat1 - 100)]
+    esp2 = [bat2, int(bat2 - 100)]
     
     ax1, ax2 = fig.subplots(2, 1)
 
