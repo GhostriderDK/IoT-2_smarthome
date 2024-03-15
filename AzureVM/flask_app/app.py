@@ -82,7 +82,7 @@ def bat_stat():
     return data
 
 def humidity_realtime():
-    fig = Figure(figsize=(3,5))
+    fig = Figure(figsize=(3,6))
     measurement = 100
     hum1 = [measurement]
     hum2 = [measurement]
@@ -114,7 +114,7 @@ def humidity_realtime():
     return data
 
 def temp_realtime():
-    fig = Figure(figsize=(3,5))
+    fig = Figure(figsize=(3,6))
     measurement = 18
     temp1 = [measurement]
     temp2 = [measurement]
@@ -144,7 +144,7 @@ def temp_realtime():
     return data
 
 def Tvoc_co2__particle_real():
-    fig = Figure(figsize=(3,5))
+    fig = Figure(figsize=(3,6))
     measurement = 18
     tvoc = [measurement]
     co2 = [measurement]
