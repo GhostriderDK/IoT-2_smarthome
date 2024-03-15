@@ -91,9 +91,9 @@ def humidity_realtime():
     
     fig = Figure(figsize=(3,6))
    
-    hum1 = [hum1]
-    hum2 = [hum2]
-    hum3 = [hum3]
+    hum1 = [hum1[0]]
+    hum2 = [hum2[0]]
+    hum3 = [hum3[0]]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
     fig.subplots_adjust(left=0.5, right=0.6)
