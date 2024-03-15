@@ -128,9 +128,9 @@ def temp_realtime():
 
     fig = Figure(figsize=(3,6))
     measurement = 18
-    temp1 = [temp1]
-    temp2 = [temp2]
-    temp3 = [temp3]
+    temp1 = [temp1[0]]
+    temp2 = [temp2[0]]
+    temp3 = [temp3[0]]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
 
@@ -161,9 +161,9 @@ def Tvoc_co2__particle_real():
 
     fig = Figure(figsize=(3,6))
     measurement = 18
-    tvoc = [tvoc]
-    co2 = [co2]
-    pm = [part]
+    tvoc = [tvoc[0]]
+    co2 = [co2[0]]
+    pm = [part[0]]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
     
