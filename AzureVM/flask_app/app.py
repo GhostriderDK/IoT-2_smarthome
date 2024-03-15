@@ -25,7 +25,7 @@ def stue_temp():
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
-    ax2.tick_params(axis='x', which='both', rotation=30)
+    ax2.tick_params(axis='x', which='both', rotation=90)
     ax2.set_facecolor("white")
     ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
     ax2.set_xlabel("Timestamps")
@@ -58,7 +58,7 @@ def stue_data_co2_tvoc_part():
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
-    ax2.tick_params(axis='x', which='both', rotation=30)
+    ax2.tick_params(axis='x', which='both', rotation=90)
     ax2.set_facecolor("white")
     ax2.plot(timestamps, co2, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
     ax2.set_xlabel("Timestamps")
