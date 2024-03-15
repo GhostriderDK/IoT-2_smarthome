@@ -5,7 +5,7 @@ from matplotlib.figure import Figure
 from matplotlib import cm
 import matplotlib.colors as mcolors
 from flask import Flask, render_template
-from get_stue_dht11_data import *
+from get_data import *
 import paho.mqtt.publish as publish
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ app.run(debug=True)
 def stue_temp():
     timestamps, temp, hum = get_stue_data(10)
 
-    # Generate the figure **without using pyplot**.
+   
     fig = Figure()
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
@@ -27,16 +27,16 @@ def stue_temp():
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
 
-    # Save it to a temporary buffer.
+    
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
+    
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
 def stue_hum():
     timestamps, temp, hum = get_stue_data(10)
-    # Generate the figure **without using pyplot**.
+    
     fig = Figure()
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
@@ -50,16 +50,17 @@ def stue_hum():
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
     
-    # Save it to a temporary buffer.
+    
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
+    
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
 def bat_stat():
+    
     fig = Figure(figsize=(4,4))
-    measurement = 75
+    
     esp1 = [measurement, 100-measurement]
     esp2 = [measurement, 100-measurement]
     
@@ -210,7 +211,3 @@ def taend():
 def sluk():
     publish.single("LED", "sluk", hostname="localhost")
     return render_template('kitchen.html')
-
-@app.route('/F_U')
-def f_u():
-    return render_template('FuckJer.html')
