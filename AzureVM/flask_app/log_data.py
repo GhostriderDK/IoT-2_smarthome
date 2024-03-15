@@ -8,7 +8,7 @@ print("subscribe mqtt script running")
 def bath_message(client, userdata, message):
     query = """INSERT INTO bad (datetime, temperature, humidity, battery) VALUES(?, ?, ?, ?)"""
     now = datetime.now()
-    now = now.strftime("%d/%m/%y %H:%M:%S")
+    now = now.strftime("%H:%M:%S")
     dht11_data = json.loads(message.payload.decode())
     data = (now, dht11_data['temp'], dht11_data['hum'], dht11_data['bat'])
     
