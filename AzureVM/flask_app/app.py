@@ -58,11 +58,13 @@ def stue_hum():
     return data
 
 def bat_stat():
+    timestamps, temp, hum, bat1 = get_bath_data(1)
+    timestamps, temp, hum, bat2 = get_bedroom_data(1)
     
     fig = Figure(figsize=(4,4))
     
-    esp1 = [measurement, 100-measurement]
-    esp2 = [measurement, 100-measurement]
+    esp1 = [bat1]
+    esp2 = [bat2]
     
     ax1, ax2 = fig.subplots(2, 1)
 
@@ -83,10 +85,15 @@ def bat_stat():
     return data
 
 def humidity_realtime():
+    timestamps, temp, hum1, bat = get_bath_data(1)
+    timestamps, temp, hum2, bat = get_bedroom_data(1)
+    timestamps, temp, hum3, tvoc, part, co2 = get_stue_data(1)
+    
     fig = Figure(figsize=(3,6))
-    measurement = 100
-    hum1 = [measurement]
-    hum2 = [measurement]
+   
+    hum1 = [hum1]
+    hum2 = [hum2]
+    hum3 = [hum3]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
     fig.subplots_adjust(left=0.5, right=0.6)
@@ -104,7 +111,7 @@ def humidity_realtime():
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
     ax2.set_title("Humidity 2")
     
-    ax3.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
+    ax3.bar(x, hum3, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
     ax3.set_title("Humidity 3")
@@ -115,10 +122,15 @@ def humidity_realtime():
     return data
 
 def temp_realtime():
+    timestamps, temp1, hum1, bat = get_bath_data(1)
+    timestamps, temp2, hum2, bat = get_bedroom_data(1)
+    timestamps, temp3, hum3, tvoc, part, co2 = get_stue_data(1)
+
     fig = Figure(figsize=(3,6))
     measurement = 18
-    temp1 = [measurement]
-    temp2 = [measurement]
+    temp1 = [temp1]
+    temp2 = [temp2]
+    temp3 = [temp3]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
 
@@ -134,7 +146,7 @@ def temp_realtime():
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
     ax2.set_title("Temperature 2")
 
-    ax3.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
+    ax3.bar(x, temp3, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
     ax3.set_title("Temperature 2")
@@ -145,10 +157,13 @@ def temp_realtime():
     return data
 
 def Tvoc_co2__particle_real():
+    timestamps, temp3, hum3, tvoc, part, co2 = get_stue_data(1)
+
     fig = Figure(figsize=(3,6))
     measurement = 18
-    tvoc = [measurement]
-    co2 = [measurement]
+    tvoc = [tvoc]
+    co2 = [co2]
+    pm = [part]
     x = 1
     ax1, ax2, ax3 = fig.subplots(3, 1)
     
@@ -164,7 +179,7 @@ def Tvoc_co2__particle_real():
             ylim=(0, 4), yticks=list(range(0, 4001, 500)))
     ax2.set_title("CO2")
 
-    ax3.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
+    ax3.bar(x, part, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 301, 50)))
     ax3.set_title("Particles")
