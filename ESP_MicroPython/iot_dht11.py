@@ -2,6 +2,7 @@ from mqtt_as import MQTTClient, config
 from utime import sleep
 import asyncio
 from machine import I2C, Pin
+import json
 
 
 ####  Sensors  ####
@@ -59,7 +60,7 @@ async def main(client):
         asyncio.create_task(coroutine(client))
 
     while True:
-        await asyncio.sleep(10)
+        await asyncio.sleep(30)
         led.on()
         
         #print('Publish', scd40_data)
@@ -69,11 +70,15 @@ async def main(client):
         sensor.measure()
         sensor_value_temp = sensor.temperature()
         sensor_value_hum = sensor.humidity()
-        print('Reading: ', sensor_value_temp, "C  ", sensor_value_hum, "%  ", bat_pct, "%")
-        
-        await client.publish('sensor/bedroom/temp', str(sensor_value_temp), qos = 1)
-        await client.publish('sensor/bedroom/hum', str(sensor_value_hum), qos = 1)
-        await client.publish('sensor/bedroom/bat', str(bat_pct), qos = 1)
+        message = {
+            "temp": sensor_value_temp,
+            "hum":	sensor_value_hum,
+            "bat": bat_pct
+        }
+        json_message = json.dumps(message)
+        print("Publish:  ", json_message)
+
+        await client.publish('sensor/bedroom/json', str(json_message), qos = 1)
         led.off()
 
 
