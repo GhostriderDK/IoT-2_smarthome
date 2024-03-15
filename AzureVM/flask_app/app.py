@@ -11,7 +11,7 @@ import paho.mqtt.publish as publish
 app = Flask(__name__)
 app.run(debug=True)
 def stue_temp():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
    
     fig = Figure()
     
@@ -46,7 +46,7 @@ def stue_temp():
     return data
 
 def stue_data_co2_tvoc_part():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
     
     fig = Figure()
     ax1 = fig.add_subplot(2, 1, 1)
