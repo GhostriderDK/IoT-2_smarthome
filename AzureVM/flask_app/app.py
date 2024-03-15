@@ -83,7 +83,7 @@ def part_in_air():
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
     
-    ax = fig.add_subplot(2, 1, 2)
+    
     ax.tick_params(axis='x', which='both', rotation=90)
     ax.set_facecolor("white")
     ax.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
