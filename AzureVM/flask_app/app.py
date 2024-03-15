@@ -15,7 +15,7 @@ def stue_temp():
 
    
     fig = Figure()
-    ax1, ax2  = fig.subplots()
+    ax1, ax2 = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
     ax1.tick_params(axis='x', which='both', rotation=30)
     ax1.set_facecolor("white")
@@ -48,7 +48,7 @@ def stue_data():
     timestamps, temp, hum, tvoc, part, co = get_stue_data(1)
     
     fig = Figure()
-    ax1, ax2 = fig.subplots()
+    ax1, ax2 = fig.subplots(1, 3)
     fig.subplots_adjust(bottom=0.3)
     ax1.tick_params(axis='x', which='both', rotation=30)
     ax1.set_facecolor("white")
