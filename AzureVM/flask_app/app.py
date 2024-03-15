@@ -46,24 +46,24 @@ def stue_temp():
     return data
 
 def stue_data_co2_tvoc_part():
-    timestamps, temp, hum, tvoc, part, co = get_stue_data(1)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
     
     fig = Figure()
     ax1 = fig.add_subplot(2, 1, 1)
     fig.subplots_adjust(bottom=0.3)
     ax1.tick_params(axis='x', which='both', rotation=30)
     ax1.set_facecolor("white")
-    ax1.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax1.plot(timestamps, tvoc, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
     ax1.set_xlabel("Timestamps")
     ax1.set_ylabel("Humidity %")
     ax1.tick_params(axis="x", colors="black")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
 
-    ax2 = fig.add_subplot(2, 1, 1)
+    ax2 = fig.add_subplot(2, 1, 2)
     ax2.tick_params(axis='x', which='both', rotation=30)
     ax2.set_facecolor("white")
-    ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax2.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
     ax2.set_xlabel("Timestamps")
     ax2.set_ylabel("Humidity %")
     ax2.tick_params(axis="x", colors="black")
