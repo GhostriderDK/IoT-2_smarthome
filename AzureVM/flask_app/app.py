@@ -119,7 +119,7 @@ def temp_realtime():
     temp1 = [measurement]
     temp2 = [measurement]
     x = 1
-    ax1, ax2, ax3 = fig.subplots(2, 1)
+    ax1, ax2, ax3 = fig.subplots(3, 1)
 
     fig.subplots_adjust(left=0.5, right=0.6)   
 
