@@ -143,13 +143,13 @@ def temp_realtime():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-def Tvoc_co2_real():
+def Tvoc_co2__particle_real():
     fig = Figure(figsize=(3,5))
     measurement = 18
     tvoc = [measurement]
     co2 = [measurement]
     x = 1
-    ax1, ax2 = fig.subplots(2, 1)
+    ax1, ax2, ax3 = fig.subplots(3, 1)
     
     fig.subplots_adjust(left=0.5, right=0.6)
 
@@ -162,6 +162,11 @@ def Tvoc_co2_real():
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 4001, 500)))
     ax2.set_title("CO2")
+
+    ax3.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
+    ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 301, 50)))
+    ax3.set_title("Praticles")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
