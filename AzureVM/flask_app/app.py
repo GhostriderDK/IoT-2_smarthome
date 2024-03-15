@@ -11,44 +11,64 @@ import paho.mqtt.publish as publish
 app = Flask(__name__)
 app.run(debug=True)
 def stue_temp():
-    timestamps, temp, hum = get_stue_data(10)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
 
    
     fig = Figure()
-    ax = fig.subplots()
+    ax1, ax2  = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
-    ax.tick_params(axis='x', which='both', rotation=30)
-    ax.set_facecolor("white")
-    ax.plot(timestamps, temp, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
-    ax.set_xlabel("Timestamps")
-    ax.set_ylabel("Temp in C")
-    fig.patch.set_facecolor("orange")
-    ax.tick_params(axis="x", colors="black")
-    ax.tick_params(axis="y", colors="blue")
-    ax.spines["left"].set_color("blue")
+    ax1.tick_params(axis='x', which='both', rotation=30)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, temp, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax1.set_xlabel("Timestamps")
+    ax1.set_ylabel("Temp in C")
+    ax1.tick_params(axis="x", colors="black")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue")
+
+    ax2.tick_params(axis='x', which='both', rotation=30)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity in %")
 
     
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue")
+    ax2.spines["left"].set_color("blue")
+
+    fig.patch.set_facecolor("orange")
     buf = BytesIO()
     fig.savefig(buf, format="png")
     
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-def stue_hum():
-    timestamps, temp, hum = get_stue_data(10)
+def stue_data():
+    timestamps, temp, hum, tvoc, part, co = get_stue_data(1)
     
     fig = Figure()
-    ax = fig.subplots()
+    ax1, ax2 = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
-    ax.tick_params(axis='x', which='both', rotation=30)
-    ax.set_facecolor("white")
-    ax.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
-    ax.set_xlabel("Timestamps")
-    ax.set_ylabel("Humidity %")
+    ax1.tick_params(axis='x', which='both', rotation=30)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax1.set_xlabel("Timestamps")
+    ax1.set_ylabel("Humidity %")
+    ax1.tick_params(axis="x", colors="black")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue")
+
+    ax2.tick_params(axis='x', which='both', rotation=30)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity %")
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue")
+    ax2.spines["left"].set_color("blue")
     fig.patch.set_facecolor("orange")
-    ax.tick_params(axis="x", colors="black")
-    ax.tick_params(axis="y", colors="blue")
-    ax.spines["left"].set_color("blue")
+    
     
     
     buf = BytesIO()
@@ -149,7 +169,7 @@ def temp_realtime():
     ax3.bar(x, temp3, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
-    ax3.set_title("Temperature 2")
+    ax3.set_title("Temperature 3")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -201,8 +221,6 @@ def mqtt():
     humidity = humidity_realtime()
     temperature = temp_realtime()
     Tvoc = Tvoc_co2__particle_real()
-    #particle_count = part_count()
-    #co2 = co_2()
     return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, temperature=temperature,
                            Tvoc=Tvoc,)
 
@@ -214,8 +232,8 @@ def kitchen():
 @app.route('/livingroom')
 def livingroom():
     stue_temperature = stue_temp()
-    stue_humidity = stue_hum()
-    return render_template('livingroom.html', stue_temperature=stue_temperature, stue_humidity=stue_humidity)
+    stue_data = stue_data()
+    return render_template('livingroom.html', stue_temperature=stue_temperature, stue_data=stue_data)
 
 @app.route('/taend/', methods=['POST'])
 def taend():
