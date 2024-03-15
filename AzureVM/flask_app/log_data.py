@@ -32,7 +32,7 @@ subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userda
 def bedroom_message(client, userdata, message):
     query = """INSERT INTO bedroom (datetime, temperature, humidity, battery) VALUES(?, ?, ?, ?)"""
     now = datetime.now()
-    now = now.strftime("%H:%M:%S")
+    now = now.strftime("%d/%m/%y %H:%M:%S")
     dht11_data = json.loads(message.payload.decode())
     data = (now, dht11_data['temp'], dht11_data['hum'], dht11_data['bat'])
     
@@ -56,7 +56,7 @@ subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost",
 def stue_message(client, userdata, message):
     query = """INSERT INTO stue (datetime, temperature, humidity, tvoc, particles, co2 ) VALUES(?, ?, ?, ?, ?, ?)"""
     now = datetime.now()
-    now = now.strftime("%H:%M:%S")
+    now = now.strftime("%d/%m/%y %H:%M:%S")
     stue_data = json.loads(message.payload.decode())
     data = (now, stue_data['temp'], stue_data['rh'], stue_data['tvoc'], stue_data['pm'], stue_data['co2'])
     
