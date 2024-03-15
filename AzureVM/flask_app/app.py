@@ -49,7 +49,7 @@ def stue_data():
     timestamps, temp, hum, tvoc, part, co = get_stue_data(1)
     
     fig = Figure()
-    ax1, ax2 = fig.subplots(1, 3)
+    ax1 = fig.add_subplot(2, 1, 1)
     fig.subplots_adjust(bottom=0.3)
     ax1.tick_params(axis='x', which='both', rotation=30)
     ax1.set_facecolor("white")
@@ -60,6 +60,7 @@ def stue_data():
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
 
+    ax2 = fig.add_subplot(2, 1, 1)
     ax2.tick_params(axis='x', which='both', rotation=30)
     ax2.set_facecolor("white")
     ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
