@@ -44,7 +44,7 @@ def stue_temp():
     return data
 
 def stue_data_co2_tvoc_part():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(50)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(30)
     
     fig = Figure()
     ax1 = fig.add_subplot(2, 1, 1)
@@ -60,7 +60,7 @@ def stue_data_co2_tvoc_part():
     ax2 = fig.add_subplot(2, 1, 2)
     ax2.tick_params(axis='x', which='both', rotation=90)
     ax2.set_facecolor("white")
-    ax2.plot(timestamps, co2, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax2.plot(timestamps, co2, linestyle="dashed", c="#11f", linewidth="1.5", marker=False)
     ax2.set_xlabel("Timestamps")
     ax2.set_ylabel("CO2 in ppm")
     ax2.tick_params(axis="x", colors="black")
@@ -77,7 +77,7 @@ def stue_data_co2_tvoc_part():
     return data
 
 def part_in_air():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(50)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(30)
     
     fig = Figure()
     ax = fig.subplots()
@@ -86,7 +86,7 @@ def part_in_air():
     
     ax.tick_params(axis='x', which='both', rotation=90)
     ax.set_facecolor("white")
-    ax.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax.plot(timestamps, part, linestyle="dashed", c="#11f", linewidth="1.5", marker=False)
     ax.set_xlabel("Timestamps")
     ax.set_ylabel("particles in µg/m³")
     ax.tick_params(axis="x", colors="black")
