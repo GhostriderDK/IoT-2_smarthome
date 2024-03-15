@@ -13,7 +13,7 @@ app.run(debug=True)
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
    
-    fig = Figure(fig) 
+    fig = Figure() 
     ax1 = fig.add_subplot(2, 1, gridspec_kw={'height_ratios': [2, 3]})
     fig.subplots_adjust(bottom=0.3)
     ax1.set_facecolor("white")
