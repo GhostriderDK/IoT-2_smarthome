@@ -44,7 +44,7 @@ def stue_temp():
     return data
 
 def stue_data_co2_tvoc_part():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(50)
     
     fig = Figure()
     ax1 = fig.add_subplot(2, 1, 1)
@@ -77,7 +77,7 @@ def stue_data_co2_tvoc_part():
     return data
 
 def part_in_air():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(50)
     
     fig = Figure()
     ax = fig.subplots()
