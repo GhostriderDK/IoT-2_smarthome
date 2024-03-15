@@ -166,7 +166,7 @@ def Tvoc_co2__particle_real():
     ax3.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 301, 50)))
-    ax3.set_title("Praticles")
+    ax3.set_title("Particles")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")

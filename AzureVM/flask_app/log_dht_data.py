@@ -33,7 +33,7 @@ def on_message_print(client, userdata, message):
     
 
     try:                        # database location and file
-        conn = sqlite3.connect("database/sensor_data.db")
+        conn = sqlite3.connect("database/data.db")
         cur = conn.cursor()
         cur.execute(query, data)
         conn.commit()
