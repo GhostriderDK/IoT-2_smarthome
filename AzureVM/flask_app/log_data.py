@@ -5,11 +5,6 @@ import paho.mqtt.subscribe as subscribe
 
 print("subscribe mqtt script running")
 
-topic_function_map = {
-    "sensor/bad/json": bath_message,
-    "sensor/bedroom/json": bedroom_message,
-    "sensor/stue/json": stue_message
-}
 
 def bath_message(client, userdata, message):
     print(client)
@@ -88,6 +83,11 @@ def stue_message(client, userdata, message):
     finally:
         conn.close
 
+topic_function_map = {
+    "sensor/bad/json": bath_message,
+    "sensor/bedroom/json": bedroom_message,
+    "sensor/stue/json": stue_message
+}
 
 
 def on_message_received(client, userdata, message):
