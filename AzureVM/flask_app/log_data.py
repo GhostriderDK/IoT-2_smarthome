@@ -5,7 +5,11 @@ import paho.mqtt.subscribe as subscribe
 
 print("subscribe mqtt script running")
 
-topics = ["sensor/bedroom/json", "sensor/bad/json", "sensor/stue/json"]
+topic_function_map = {
+    "sensor/bad/json": bath_message,
+    "sensor/bedroom/json": bedroom_message,
+    "sensor/stue/json": stue_message
+}
 
 def bath_message(client, userdata, message):
     print(client)
@@ -85,6 +89,16 @@ def stue_message(client, userdata, message):
         conn.close
 
 
-subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userdata={"message_count": 0})
-subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
-subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
+
+def on_message_received(client, userdata, message):
+    topic = message.topic
+    if topic in topic_function_map:
+        topic_function_map[topic](client, userdata, message)
+    else:
+        print(f"No function mapped for topic: {topic}")
+
+subscribe.callback(on_message_received, topics, hostname="localhost", userdata={"message_count": 0})
+
+# subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userdata={"message_count": 0})
+# subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
+# subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
