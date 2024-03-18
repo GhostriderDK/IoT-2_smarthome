@@ -5,6 +5,9 @@ import paho.mqtt.subscribe as subscribe
 
 print("subscribe mqtt script running")
 
+topics = ["sensor/bedroom/json", "sensor/bad/json", "sensor/stue/json"]
+
+
 def bath_message(client, userdata, message):
     query = """INSERT INTO bad (datetime, temperature, humidity, battery) VALUES(?, ?, ?, ?)"""
     now = datetime.now()
@@ -27,7 +30,7 @@ def bath_message(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userdata={"message_count": 0})
+
 
 def bedroom_message(client, userdata, message):
     query = """INSERT INTO bedroom (datetime, temperature, humidity, battery) VALUES(?, ?, ?, ?)"""
@@ -51,7 +54,6 @@ def bedroom_message(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
 
 def stue_message(client, userdata, message):
     query = """INSERT INTO stue (datetime, temperature, humidity, tvoc, particles, co2 ) VALUES(?, ?, ?, ?, ?, ?)"""
@@ -75,4 +77,4 @@ def stue_message(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
+subscribe.callback(stue_message, topics, hostname="localhost", userdata={"message_count": 0})
