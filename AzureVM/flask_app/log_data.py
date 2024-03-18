@@ -77,4 +77,7 @@ def stue_message(client, userdata, message):
         print(f"Another error occured: {e}")
     finally:
         conn.close
-subscribe.callback(stue_message, topics, hostname="localhost", userdata={"message_count": 0})
+subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userdata={"message_count": 0})
+subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
+subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
+
