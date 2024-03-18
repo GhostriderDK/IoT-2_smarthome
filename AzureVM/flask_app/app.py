@@ -109,16 +109,16 @@ def bat_stat():
     
     fig = Figure(figsize=(4,4))
     
-    esp1 = [bat1[0], 100 - int(bat1[0])]
-    esp2 = [bat2[0], 100 - int(bat2[0])]
+    bath_esp = [bat1[0], 100 - int(bat1[0])]
+    bed_esp = [bat2[0], 100 - int(bat2[0])]
     
     ax1, ax2 = fig.subplots(2, 1)
 
-    ax1.pie(esp1, radius=1, center=(0.5, 0.5),
+    ax1.pie(bath_esp, radius=1, center=(0.5, 0.5),
                 frame=False, labels=['tilbage', ' '],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax1.set_title("ESP1")
-    ax2.pie(esp2, radius=1, center=(0.5, 0.5),
+    ax2.pie(bed_esp, radius=1, center=(0.5, 0.5),
                 frame=False, labels=['tilbage', ' '],
                 colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
     ax2.set_title("ESP2")
