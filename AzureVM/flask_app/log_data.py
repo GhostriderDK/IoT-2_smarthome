@@ -96,7 +96,7 @@ def on_message(client, userdata, message):
     elif message.topic == "sensor/stue/json":
         stue_message(client, userdata, message)
 
-client = mqtt.Client(protocol=mqtt.MQTTv311, callback_api_version=mqtt.CALLBACK_VERSION_31)) 
+client = mqtt.Client(protocol=mqtt.MQTTv311, callback_api_version=mqtt.CALLBACK_VERSION_31)
 
 # Assign on_connect and on_message callbacks
 client.on_connect = on_connect
