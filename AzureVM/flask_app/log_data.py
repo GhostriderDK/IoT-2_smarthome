@@ -81,3 +81,5 @@ subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userda
 subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
 subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
 
+while True:
+    pass
