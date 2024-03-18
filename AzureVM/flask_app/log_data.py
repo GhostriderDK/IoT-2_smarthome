@@ -101,7 +101,7 @@ client = mqtt.Client(protocol=mqtt.MQTTv311)
 # Assign on_connect and on_message callbacks
 client.on_connect = on_connect
 client.on_message = on_message
-#
+
 # Connect to local MQTT broker
 client.connect("127.0.0.1", 1883)
 
