@@ -109,8 +109,8 @@ def bat_stat():
     
     fig = Figure(figsize=(3,6))
     
-    bath_esp = [bat1[0], 100 - int(bat1[0])]
-    bed_esp = [bat2[0], 100 - int(bat2[0])]
+    bath_esp = bat1[0]
+    bed_esp = bat2[0]
     x = 1
     ax1, ax2 = fig.subplots(2, 1)
     fig.subplots_adjust(left=0.5, right=0.6)
