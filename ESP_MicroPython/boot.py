@@ -1,8 +1,14 @@
-# This file is executed on every boot (including wake-boot from deepsleep)
-#import esp
-#esp.osdebug(None)
-#import webrepl
-#webrepl.start()
+##############################################
+#  boot.py   This file is executed on boot   #
+#                                            #
+#  KEA IT TEKNOLOG  -  IOT2 Projekt 2024     #
+#  Gruppe 6C:                                #
+#  Alexander Gundsø, Mads Janum Magnusson,   #
+#  Emil Bøegh Grønning-Vogter &              #
+#  Jacob Rusch Svendsen                      #
+#                                            #
+##############################################
+
 import time
 print("Sleeping 3 seconds before starting application. Press Ctrl+C to stop.")
 time.sleep(1)

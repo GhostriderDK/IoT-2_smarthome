@@ -1,3 +1,14 @@
+##############################################
+#  ENS160 Multi-gas sensor interface module  #
+#                                            #
+#  KEA IT TEKNOLOG  -  IOT2 Projekt 2024     #
+#  Gruppe 6C:                                #
+#  Alexander Gundsø, Mads Janum Magnusson,   #
+#  Emil Bøegh Grønning-Vogter &              #
+#  Jacob Rusch Svendsen                      #
+#                                            #
+##############################################
+
 from machine import I2C, Pin
 import ens160sciosense
 from sensor_pack.bus_service import I2cAdapter
@@ -5,7 +16,6 @@ import time
 
 def init(i2c):
     print("\n###  Initialising  ENS160 multi-gas sensor ###")
-    #i2c = I2C(1, scl=Pin(19), sda=Pin(18), freq=400000) 
     adaptor = I2cAdapter(i2c)
     
     gas_sens = ens160sciosense.Ens160(adaptor)
