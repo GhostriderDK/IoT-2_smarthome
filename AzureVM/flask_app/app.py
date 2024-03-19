@@ -119,13 +119,13 @@ def bat_stat():
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
     ax1.bar_label(ax1.containers[0], fmt='%d', padding=3)
-    ax1.set_title("ESP Bath Bat")
+    ax1.set_title("ESP Bed Bat")
 
     ax2.bar(x, bath_esp, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
     ax2.bar_label(ax2.containers[0], fmt='%d', padding=3)
-    ax2.set_title("ESP Bed Bat")
+    ax2.set_title("ESP Bath Bat")
 
     fig.tight_layout()
 
