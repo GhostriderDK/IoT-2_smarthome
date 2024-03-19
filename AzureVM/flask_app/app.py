@@ -111,17 +111,20 @@ def bat_stat():
     
     bath_esp = [bat1[0], 100 - int(bat1[0])]
     bed_esp = [bat2[0], 100 - int(bat2[0])]
+
+    x = 1
     
     ax1, ax2 = fig.subplots(2, 1)
 
-    ax1.pie(bath_esp, radius=1, center=(0.5, 0.5),
-                frame=False, labels=['tilbage', ' '],
-                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
-    ax1.set_title("ESP1")
-    ax2.pie(bed_esp, radius=1, center=(0.5, 0.5),
-                frame=False, labels=['tilbage', ' '],
-                colors=['Green', 'Red'], autopct='%1.0f%%', startangle=270)
-    ax2.set_title("ESP2")
+    ax1.bar(x, bed_esp, width=1, edgecolor="white", linewidth=0.7)
+    ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax1.set_title("ESP Bath Bat")
+
+    ax2.bar(x, bath_esp, width=1, edgecolor="white", linewidth=0.7)
+    ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
+            ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax2.set_title("ESP Bed Bat")
 
     fig.tight_layout()
 
