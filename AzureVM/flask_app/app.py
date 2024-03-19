@@ -118,11 +118,13 @@ def bat_stat():
     ax1.bar(x, bed_esp, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax1.bar_label(rects, padding=3)
     ax1.set_title("ESP Bath Bat")
 
     ax2.bar(x, bath_esp, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax2.bar_label(rects, padding=3)
     ax2.set_title("ESP Bed Bat")
 
     fig.tight_layout()
@@ -152,16 +154,19 @@ def humidity_realtime():
     ax1.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax1.bar_label(rects, padding=3)
     ax1.set_title("Humidity Bath")
 
     ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax2.bar_label(rects, padding=3)
     ax2.set_title("Humidity Bedroom")
     
     ax3.bar(x, hum3, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
+    ax3.bar_label(rects, padding=3)
     ax3.set_title("Humidity Stue")
 
     buf = BytesIO()
@@ -187,16 +192,19 @@ def temp_realtime():
     ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
+    ax1.bar_label(rects, padding=3)
     ax1.set_title("Temperature Bath")
 
     ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
+    ax2.bar_label(rects, padding=3)
     ax2.set_title("Temperature Bedroom")
 
     ax3.bar(x, temp3, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
+    ax3.bar_label(rects, padding=3)
     ax3.set_title("Temperature Stue")
 
     buf = BytesIO()
@@ -220,16 +228,19 @@ def Tvoc_co2__particle_real():
     ax1.bar(x, tvoc, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 2001, 500)))
+    ax1.bar_label(rects, padding=3)
     ax1.set_title("Tvoc")
 
     ax2.bar(x, co2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 4001, 500)))
+    ax2.bar_label(rects, padding=3)
     ax2.set_title("CO2")
 
     ax3.bar(x, part, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 20, 2)))
+    ax3.bar_label(rects, padding=3)
     ax3.set_title("Particles")
 
     buf = BytesIO()
