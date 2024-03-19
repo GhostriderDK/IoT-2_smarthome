@@ -229,7 +229,7 @@ def Tvoc_co2__particle_real():
 
     ax3.bar(x, part, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
-            ylim=(0, 4), yticks=list(range(0, 301, 50)))
+            ylim=(0, 4), yticks=list(range(0, 20, 2)))
     ax3.set_title("Particles")
 
     buf = BytesIO()
