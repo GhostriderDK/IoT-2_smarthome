@@ -116,6 +116,8 @@ def bat_stat():
     
     ax1, ax2 = fig.subplots(2, 1)
 
+    fig.subplots_adjust(left=0.5, right=0.6)
+
     ax1.bar(x, bed_esp, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
