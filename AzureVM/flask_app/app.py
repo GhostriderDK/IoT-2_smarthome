@@ -107,15 +107,12 @@ def bat_stat():
     timestamps, temp, hum, bat1 = get_bath_data(1)
     timestamps, temp, hum, bat2 = get_bedroom_data(1)
     
-    fig = Figure(figsize=(4,4))
+    fig = Figure(figsize=(3,6))
     
     bath_esp = [bat1[0], 100 - int(bat1[0])]
     bed_esp = [bat2[0], 100 - int(bat2[0])]
-
     x = 1
-    
     ax1, ax2 = fig.subplots(2, 1)
-
     fig.subplots_adjust(left=0.5, right=0.6)
 
     ax1.bar(x, bed_esp, width=1, edgecolor="white", linewidth=0.7)
