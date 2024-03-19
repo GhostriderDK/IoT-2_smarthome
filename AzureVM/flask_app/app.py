@@ -150,17 +150,17 @@ def humidity_realtime():
     ax1.bar(x, hum1, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
-    ax1.set_title("Humidity 1")
+    ax1.set_title("Humidity Bath")
 
     ax2.bar(x, hum2, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
-    ax2.set_title("Humidity 2")
+    ax2.set_title("Humidity Bedroom")
     
     ax3.bar(x, hum3, width=1, edgecolor="white", linewidth=0.7,  color=custom_cmap(hum1))
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(0, 101, 25)))
-    ax3.set_title("Humidity 3")
+    ax3.set_title("Humidity Stue")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -185,17 +185,17 @@ def temp_realtime():
     ax1.bar(x, temp1, width=1, edgecolor="white", linewidth=0.7)
     ax1.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
-    ax1.set_title("Temperature 1")
+    ax1.set_title("Temperature Bath")
 
     ax2.bar(x, temp2, width=1, edgecolor="white", linewidth=0.7)
     ax2.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
-    ax2.set_title("Temperature 2")
+    ax2.set_title("Temperature Bedroom")
 
     ax3.bar(x, temp3, width=1, edgecolor="white", linewidth=0.7)
     ax3.set(xlim=(1, 1), xticks=list(range(1, 1)),
             ylim=(0, 4), yticks=list(range(10, 41, 10)))
-    ax3.set_title("Temperature 3")
+    ax3.set_title("Temperature Stue")
 
     buf = BytesIO()
     fig.savefig(buf, format="png")
