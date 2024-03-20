@@ -1,3 +1,14 @@
+##############################################
+#  SCD40 CO2 sensor interface module         #
+#                                            #
+#  KEA IT TEKNOLOG  -  IOT2 Projekt 2024     #
+#  Gruppe 6C:                                #
+#  Alexander Gundsø, Mads Janum Magnusson,   #
+#  Emil Bøegh Grønning-Vogter &              #
+#  Jacob Rusch Svendsen                      #
+#                                            #
+##############################################
+
 import time
 
 from scd4x_sensirion import SCD4xSensirion
@@ -28,7 +39,7 @@ def init(i2c):
     print(f"Get M.A.S.L. from sensor: {masl} meter")
     # data ready
     if sen.is_data_ready():
-        print("Measurement data can be read!")  # Данные измерений могут быть прочитаны!
+        print("Measurement data can be read!")
     else:
         print("Measurement data missing!")
     

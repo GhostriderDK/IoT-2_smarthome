@@ -1,3 +1,15 @@
+##############################################
+#  Main program for ESP32 with multiple      #
+#  air quality monitoring sensors            #
+#                                            #
+#  KEA IT TEKNOLOG  -  IOT2 Projekt 2024     #
+#  Gruppe 6C:                                #
+#  Alexander Gundsø, Mads Janum Magnusson,   #
+#  Emil Bøegh Grønning-Vogter &              #
+#  Jacob Rusch Svendsen                      #
+#                                            #
+##############################################
+
 from mqtt_as import MQTTClient, config
 from utime import sleep
 import asyncio
