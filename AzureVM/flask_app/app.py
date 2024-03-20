@@ -10,6 +10,7 @@ import paho.mqtt.publish as publish
 
 app = Flask(__name__)
 app.run(debug=True)
+
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
    
@@ -30,16 +31,14 @@ def stue_temp():
     ax2.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker=False)
     ax2.set_xlabel("Timestamps")
     ax2.set_ylabel("Humidity in %")
-
-    
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
+    
     fig.subplots_adjust(bottom=0.3)
     fig.patch.set_facecolor("orange")
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
@@ -67,12 +66,9 @@ def stue_data_co2_tvoc_part():
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
     fig.patch.set_facecolor("orange")
-    
-    
-    
+        
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
@@ -82,7 +78,6 @@ def part_in_air():
     fig = Figure()
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
-    
     
     ax.tick_params(axis='x', which='both', rotation=90)
     ax.set_facecolor("white")
@@ -94,14 +89,10 @@ def part_in_air():
     ax.spines["left"].set_color("blue")
     fig.patch.set_facecolor("orange")
     
-    
-    
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
-
 
 def bat_stat():
     timestamps, temp, hum, bat1 = get_bath_data(1)
@@ -128,7 +119,6 @@ def bat_stat():
     ax2.set_title("ESP Bath Bat")
 
     fig.tight_layout()
-
     buf = BytesIO()
     fig.savefig(buf, format="png")
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
@@ -248,8 +238,6 @@ def Tvoc_co2__particle_real():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
-
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -260,9 +248,8 @@ def mqtt():
     humidity = humidity_realtime()
     temperature = temp_realtime()
     Tvoc = Tvoc_co2__particle_real()
-    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, temperature=temperature,
-                           Tvoc=Tvoc,)
-
+    return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, 
+                           temperature=temperature, Tvoc=Tvoc,)
 
 @app.route('/kitchen')
 def kitchen():
@@ -273,7 +260,8 @@ def livingroom():
     stue_temperature = stue_temp()
     stue_data = stue_data_co2_tvoc_part()
     part_air = part_in_air()
-    return render_template('livingroom.html', stue_temperature=stue_temperature, stue_data=stue_data, part_air=part_air)
+    return render_template('livingroom.html', stue_temperature=stue_temperature, 
+                           stue_data=stue_data, part_air=part_air)
 
 @app.route('/taend/', methods=['POST'])
 def taend():
