@@ -33,6 +33,7 @@ def stue_temp():
     ax2.set_ylabel("Humidity in %")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
+    ax2.set_xticks(range(0, len(timestamps), len(timestamps) // 20))
     ax2.spines["left"].set_color("blue")
     
     fig.subplots_adjust(bottom=0.3)
@@ -65,6 +66,7 @@ def stue_data_co2_tvoc_part():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
+    ax2.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     fig.patch.set_facecolor("orange")
         
     buf = BytesIO()
@@ -87,7 +89,7 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
-    ax.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
+    ax.set_xticks(range(0, len(timestamps), len(timestamps) // 20))
     fig.patch.set_facecolor("orange")
     
     buf = BytesIO()
