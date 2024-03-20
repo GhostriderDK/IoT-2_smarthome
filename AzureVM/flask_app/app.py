@@ -22,7 +22,7 @@ def stue_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    ax1.set_xticks([])  
+    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 10)) 
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
@@ -53,7 +53,7 @@ def stue_data_co2_tvoc_part():
     ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    ax1.set_xticks([])  
+    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
@@ -87,6 +87,7 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
+    ax.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     fig.patch.set_facecolor("orange")
     
     buf = BytesIO()
