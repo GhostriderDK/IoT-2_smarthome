@@ -22,7 +22,7 @@ def stue_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 20)) 
+    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 10)) 
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
@@ -33,7 +33,7 @@ def stue_temp():
     ax2.set_ylabel("Humidity in %")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
-    ax2.set_xticks(range(0, len(timestamps), len(timestamps) // 20))
+    ax2.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     ax2.spines["left"].set_color("blue")
     
     fig.subplots_adjust(bottom=0.3)
@@ -54,7 +54,7 @@ def stue_data_co2_tvoc_part():
     ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 20))
+    ax1.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     ax1.set_xticklabels([])
 
     ax2 = fig.add_subplot(2, 1, 2)
