@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.run(debug=True)
 
 def stue_temp():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(20)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(500)
    
     fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
@@ -44,7 +44,7 @@ def stue_temp():
     return data
 
 def stue_data_co2_tvoc_part():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(30)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(500)
     
     fig = Figure()
     ax1 = fig.add_subplot(2, 1, 1)
@@ -75,7 +75,7 @@ def stue_data_co2_tvoc_part():
     return data
 
 def part_in_air():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(30)
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(500)
     
     fig = Figure()
     ax = fig.subplots()
@@ -89,7 +89,7 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
-    ax.set_xticks(range(0, len(timestamps), len(timestamps) // 20))
+    ax.set_xticks(range(0, len(timestamps), len(timestamps) // 10))
     fig.patch.set_facecolor("orange")
     
     buf = BytesIO()
