@@ -39,7 +39,7 @@ def init(i2c):
     print(f"Get M.A.S.L. from sensor: {masl} meter")
     # data ready
     if sen.is_data_ready():
-        print("Measurement data can be read!")  # Данные измерений могут быть прочитаны!
+        print("Measurement data can be read!")
     else:
         print("Measurement data missing!")
     
