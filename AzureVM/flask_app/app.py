@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.run(debug=True)
 
 datapoints = 100
+num_ticks = 20
 
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
@@ -24,7 +25,6 @@ def stue_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    num_ticks = len(timestamps) // 20
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
     ax1.set_xticks(tick_positions) 
     ax1.set_xticklabels([])
@@ -38,7 +38,6 @@ def stue_temp():
     ax2.set_ylabel("Humidity in %")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
-    num_ticks = len(timestamps) // 20
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
     ax2.set_xticks(tick_positions)
     ax2.spines["left"].set_color("blue")
@@ -62,7 +61,6 @@ def stue_data_co2_tvoc_part():
     ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    num_ticks = len(timestamps) // 20
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
     ax1.set_xticks(tick_positions)
     ax1.set_xticklabels([])
@@ -77,7 +75,6 @@ def stue_data_co2_tvoc_part():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
-    num_ticks = len(timestamps) // 20
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
     ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
@@ -103,7 +100,6 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
-    num_ticks = len(timestamps) // 20
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
     ax.set_xticks(tick_positions)
     ax.grid(axis='y', linestyle='--')
