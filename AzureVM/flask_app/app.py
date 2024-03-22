@@ -1,8 +1,6 @@
 import base64
 from io import BytesIO
-from datetime import datetime
 from matplotlib.figure import Figure
-from matplotlib import cm
 import matplotlib.colors as mcolors
 from flask import Flask, render_template
 from get_data import *
