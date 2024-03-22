@@ -1,6 +1,4 @@
 import sqlite3
-from datetime import datetime
-from random import randint
 from time import sleep
 
 def get_stue_data(number_of_rows):
