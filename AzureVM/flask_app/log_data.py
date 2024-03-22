@@ -89,7 +89,3 @@ def on_message_received(client, userdata, message):
 
 topics = ["sensor/bedroom/json", "sensor/bad/json", "sensor/stue/json"]
 subscribe.callback(on_message_received, topics, hostname="localhost", userdata={"message_count": 0})
-
-# subscribe.callback(bath_message, "sensor/bad/json", hostname="localhost", userdata={"message_count": 0})
-# subscribe.callback(bedroom_message, "sensor/bedroom/json", hostname="localhost", userdata={"message_count": 0})
-# subscribe.callback(stue_message, "sensor/stue/json", hostname="localhost", userdata={"message_count": 0})
