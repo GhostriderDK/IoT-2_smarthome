@@ -26,6 +26,9 @@ pm1006 = Pin(15, Pin.IN)
 
 # Activity LED
 led = Pin(23, Pin.OUT)
+
+# Fan control
+fan = Pin(24. Pin.OUT)
 ###  Calibrate  ###
 
 #ens160.set_ambient_temp(float(scd40_data["temp"]))
@@ -44,6 +47,10 @@ def reboot_esp():
 async def messages(client):  # Respond to incoming messages
     async for topic, msg, retained in client.queue:
         print((topic, msg, retained))
+        if msg == '1':
+            fan.on()
+        elif msg == '0':
+            fan.off()
 
 async def up(client):  # Respond to connectivity being (re)established
     while True:
