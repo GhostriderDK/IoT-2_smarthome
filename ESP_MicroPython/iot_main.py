@@ -49,7 +49,7 @@ async def up(client):  # Respond to connectivity being (re)established
     while True:
         await client.up.wait()  # Wait on an Event
         client.up.clear()
-        await client.subscribe('foo_topic', 1)  # renew subscriptions
+        await client.subscribe('ventilation', 1)  # renew subscriptions
 
 async def main(client):
     try:
