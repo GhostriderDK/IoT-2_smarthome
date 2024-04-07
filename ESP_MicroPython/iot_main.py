@@ -16,8 +16,8 @@ pm1006 = Pin(15, Pin.IN)
 led = Pin(23, Pin.OUT)
 
 # Fan control
-frequency = 25000 # Hz
-fan = PWM(Pin(14, frequency, duty_ns=1))
+frequency = 25_000 # 25 KHz PWM frekvens
+fan = PWM(14, frequency, duty=0)
 # fan.duty(0)		= 0 %	duty cycle
 # fan.duty(1023)	= 100 %	duty cycle
 
@@ -26,7 +26,7 @@ fan = PWM(Pin(14, frequency, duty_ns=1))
 #ens160.set_humidity(float(scd40_data["rh"]))
 
 # Local configuration
-config['server'] = '52.236.38.161'  # Change to suit
+config['server'] = 'iot2.northeurope.cloudapp.azure.com'  # Change to suit
 config['ssid'] = 'iot'
 config['wifi_pw'] = 'gruppe06'
 
@@ -38,12 +38,20 @@ def reboot_esp():
 async def messages(client):  # Respond to incoming messages
     async for topic, msg, retained in client.queue:
         print((topic, msg, retained))
+        try:
+            value = int(msg)
+        except:
+            print("Error converting message to integer")
+        if value > 0:
+            fan.duty(1023)
+        elif value < 1:
+            fan.duty(0)
 
 async def up(client):  # Respond to connectivity being (re)established
     while True:
         await client.up.wait()  # Wait on an Event
         client.up.clear()
-        await client.subscribe('foo_topic', 1)  # renew subscriptions
+        await client.subscribe('sensor/stue/fan', 1)  # renew subscriptions
 
 async def main(client):
     try:
