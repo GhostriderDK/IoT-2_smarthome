@@ -19,7 +19,7 @@ led = Pin(23, Pin.OUT)
 frequency = 25000 # Hz
 fan = PWM(Pin(14, frequency))
 # fan.duty(0)		= 0 %	duty cycle
-# fan.duty(s1023)	= 100 %	duty cycle
+# fan.duty(1023)	= 100 %	duty cycle
 
 ###  Calibrate  ###
 #ens160.set_ambient_temp(float(scd40_data["temp"]))
