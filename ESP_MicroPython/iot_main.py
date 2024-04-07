@@ -17,7 +17,7 @@ led = Pin(23, Pin.OUT)
 
 # Fan control
 frequency = 25000 # Hz
-fan = PWM(Pin(14, frequency))
+fan = PWM(Pin(14, frequency, duty_ns=1))
 # fan.duty(0)		= 0 %	duty cycle
 # fan.duty(1023)	= 100 %	duty cycle
 
