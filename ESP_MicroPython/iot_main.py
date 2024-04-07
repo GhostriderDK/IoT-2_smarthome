@@ -1,19 +1,7 @@
-##############################################
-#  Main program for ESP32 with multiple      #
-#  air quality monitoring sensors            #
-#                                            #
-#  KEA IT TEKNOLOG  -  IOT2 Projekt 2024     #
-#  Gruppe 6C:                                #
-#  Alexander Gundsø, Mads Janum Magnusson,   #
-#  Emil Bøegh Grønning-Vogter &              #
-#  Jacob Rusch Svendsen                      #
-#                                            #
-##############################################
-
 from mqtt_as import MQTTClient, config
 from utime import sleep
 import asyncio
-from machine import I2C, Pin, time_pulse_us
+from machine import I2C, Pin, PWM, time_pulse_us
 import json
 
 ####  Sensors  ####
@@ -28,9 +16,12 @@ pm1006 = Pin(15, Pin.IN)
 led = Pin(23, Pin.OUT)
 
 # Fan control
-fan = Pin(24. Pin.OUT)
-###  Calibrate  ###
+frequency = 25000 # Hz
+fan = PWM(Pin(14, frequency))
+# fan.duty(0)		= 0 %	duty cycle
+# fan.duty(s1023)	= 100 %	duty cycle
 
+###  Calibrate  ###
 #ens160.set_ambient_temp(float(scd40_data["temp"]))
 #ens160.set_humidity(float(scd40_data["rh"]))
 
@@ -47,16 +38,12 @@ def reboot_esp():
 async def messages(client):  # Respond to incoming messages
     async for topic, msg, retained in client.queue:
         print((topic, msg, retained))
-        if msg == '1':
-            fan.on()
-        elif msg == '0':
-            fan.off()
 
 async def up(client):  # Respond to connectivity being (re)established
     while True:
         await client.up.wait()  # Wait on an Event
         client.up.clear()
-        await client.subscribe('ventilation', 1)  # renew subscriptions
+        await client.subscribe('foo_topic', 1)  # renew subscriptions
 
 async def main(client):
     try:
