@@ -6,6 +6,12 @@
 <div class="container-fluid">
 <h1>Stue Dashboard</h1>
 <div class="input-group mb-3">
+<form>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-outline-success" action="/taend/" method="POST">Start ventilation</button>
+        <button type="submit" class="btn btn-outline-secondary" action="/sluk/" method="POST">Stop ventilation</button>
+    </div>
+</form>
 <form action="/taend/" method="POST"><button class="btn btn-outline-secondary">Start ventilation</button></form>
 <form action="/sluk/" method="POST"><button class="btn btn-outline-secondary">Sluk ventilation</button></form>
 </div>
