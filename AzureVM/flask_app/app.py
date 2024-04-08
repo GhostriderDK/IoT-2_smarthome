@@ -9,7 +9,7 @@ import paho.mqtt.publish as publish
 app = Flask(__name__)
 app.run(debug=True)
 datapoints = 1000
-num_ticks = 10
+num_ticks = 20
 
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
