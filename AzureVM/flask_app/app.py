@@ -11,6 +11,78 @@ app.run(debug=True)
 datapoints = 1000
 num_ticks = 20
 
+def bath_temp():
+    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
+   
+    fig = Figure() 
+    ax1 = fig.add_subplot(2, 1, 1)
+    fig.subplots_adjust(bottom=0.1)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, temp, linestyle="solid", c="#11f", linewidth="1.5")
+    ax1.set_ylabel("Temp in C")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
+    ax1.set_xticks(tick_positions) 
+    ax1.set_xticklabels([])
+    ax1.grid(axis='y', linestyle='--')
+
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.tick_params(axis='x', which='both', rotation=90)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="solid", c="#11f", linewidth="1.5")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity in %")
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
+    ax2.spines["left"].set_color("blue")
+    ax2.grid(axis='y', linestyle='--')
+    
+    fig.subplots_adjust(bottom=0.3)
+    fig.patch.set_facecolor("orange")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
+def bedroom_temp():
+    timestamps, temp, hum, tvoc, part, co2 = get_bedroom_data(datapoints)
+   
+    fig = Figure() 
+    ax1 = fig.add_subplot(2, 1, 1)
+    fig.subplots_adjust(bottom=0.1)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, temp, linestyle="solid", c="#11f", linewidth="1.5")
+    ax1.set_ylabel("Temp in C")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
+    ax1.set_xticks(tick_positions) 
+    ax1.set_xticklabels([])
+    ax1.grid(axis='y', linestyle='--')
+
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.tick_params(axis='x', which='both', rotation=90)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="solid", c="#11f", linewidth="1.5")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity in %")
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
+    ax2.spines["left"].set_color("blue")
+    ax2.grid(axis='y', linestyle='--')
+    
+    fig.subplots_adjust(bottom=0.3)
+    fig.patch.set_facecolor("orange")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
    
@@ -264,9 +336,15 @@ def mqtt():
     return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, 
                            temperature=temperature, Tvoc=Tvoc,)
 
-@app.route('/kitchen')
+@app.route('/Bath')
 def kitchen():
-    return render_template('kitchen.html')
+    bath_data = bath_temp()
+    return render_template('simple_graph.html', bath_data=bath_data)
+
+@app.route('/Bedroom')
+def bedroom():
+    bedgraph_data = bedroom_temp()
+    return render_template('simple_graph.html', bedgraph_data=bedgraph_data)
 
 @app.route('/livingroom')
 def livingroom():
