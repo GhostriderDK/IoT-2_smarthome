@@ -279,9 +279,9 @@ def livingroom():
 @app.route('/taend/', methods=['POST'])
 def taend():
     publish.single("sensor/stue/fan", "1", hostname="localhost")
-    return render_template('kitchen.html')
+    return render_template('livingroom.html')
 
 @app.route('/sluk/', methods=['POST'])
 def sluk():
     publish.single("sensor/stue/fan", "0", hostname="localhost")
-    return render_template('kitchen.html')
+    return render_template('livingroom.html')
