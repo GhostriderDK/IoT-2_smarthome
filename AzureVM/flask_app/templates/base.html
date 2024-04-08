@@ -8,35 +8,38 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <title>{% block title %} {% endblock %} - IndeklimaKontrol</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home') }}"> KEA  IoT2 </a>
+        <a class="navbar-brand" href="{{ url_for('home') }}"> <em>IndeklimaKontrol</em> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-            <li class="nav-item">
+            <li class="nav-link px-2">
               <a class="nav-link" href="{{ url_for('mqtt') }}">mqtt</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-link px-2">
               <a class="nav-link" href="{{ url_for('bath') }}">Bath</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-link px-2">
               <a class="nav-link" href="{{ url_for('livingroom')}}">Stue</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-link px-2">
               <a class="nav-link" href="{{ url_for('bedroom')}}">Bedroom</a>
             </li>
 
         </ul>
+        <div class="text-end">
+          <button class="btn btn-outline-light me-2" type="button">Log out</button>
+        </div>
         </div>
     </div>
     </nav>
