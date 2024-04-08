@@ -336,12 +336,12 @@ def mqtt():
     return render_template('mqtt.html', esp_bat_stat=esp_bat_stat, humidity=humidity, 
                            temperature=temperature, Tvoc=Tvoc,)
 
-@app.route('/Bath')
+@app.route('/bath')
 def kitchen():
     bath_data = bath_temp()
     return render_template('simple_graph.html', bath_data=bath_data)
 
-@app.route('/Bedroom')
+@app.route('/bedroom')
 def bedroom():
     bedgraph_data = bedroom_temp()
     return render_template('simple_graph.html', bedgraph_data=bedgraph_data)
