@@ -337,7 +337,7 @@ def mqtt():
                            temperature=temperature, Tvoc=Tvoc,)
 
 @app.route('/bath')
-def kitchen():
+def bath():
     bath_data = bath_temp()
     return render_template('simple_graph.html', bath_data=bath_data)
 
