@@ -4,19 +4,16 @@
 {% block content %} 
 <meta http-equiv="refresh" content="30">
 <div class="container-fluid">
-<h1>Livingroom</h1>
+<h1>Stue Dashboard</h1>
 <div class="input-group mb-3">
 <form>
     <div class="mb-3">
-        <button type="submit" class="btn btn-outline-success" action="/taend/" method="POST">Start ventilation</button>
-    </div>
-</form action="/taend/" method="POST">
-<form>
-<div class="mb=3">
-        <button type="submit" class="btn btn-outline-secondary" action="/sluk/" method="POST">Stop ventilation</button>
+        <form action="/taend/" method="POST"><button class="btn btn-outline-primary">Start ventilation</button></form>
+        <form action="/sluk/" method="POST"><button class="btn btn-outline-secondary">Sluk ventilation</button></form>
     </div>
 </form>
-<div>
+
+</div>
 <img class="img-fluid float-left" src='data:image/png;base64,{{stue_temperature}}'/>
 <img class="img-fluid float-right" src='data:image/png;base64,{{stue_data}}'/>
 <img class="img-fluid float-right" src='data:image/png;base64,{{part_air}}'/>
