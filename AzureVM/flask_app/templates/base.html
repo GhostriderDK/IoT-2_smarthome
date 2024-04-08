@@ -11,29 +11,29 @@
     <title>{% block title %} {% endblock %} - IndeklimaKontrol</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <nav class="shadow-lg p-3 mb-5 bg-dark rounded navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid ">
         <a class="navbar-brand" href="{{ url_for('home') }}"> <em>IndeklimaKontrol</em> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <ul class="nav nav-pills col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-            <li class="nav-link px-2">
-              <a class="nav-link" href="{{ url_for('mqtt') }}">mqtt</a>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{{ url_for('mqtt') }}"><strong>MQTT</strong></a>
             </li>
 
-            <li class="nav-link px-2">
-              <a class="nav-link" href="{{ url_for('bath') }}">Bath</a>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{{ url_for('bath') }}"><strong>Bath</strong></a>
             </li>
 
-            <li class="nav-link px-2">
-              <a class="nav-link" href="{{ url_for('livingroom')}}">Stue</a>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{{ url_for('livingroom')}}"><strong>Stue</strong></a>
             </li>
 
-            <li class="nav-link px-2">
-              <a class="nav-link" href="{{ url_for('bedroom')}}">Bedroom</a>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{{ url_for('bedroom')}}"><strong>Bedroom</strong></a>
             </li>
 
         </ul>
