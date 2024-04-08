@@ -12,7 +12,7 @@ datapoints = 1000
 num_ticks = 20
 
 def bath_temp():
-    timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
+    timestamps, temp, hum = get_bath_data(datapoints)
    
     fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
@@ -48,7 +48,7 @@ def bath_temp():
     return data
 
 def bedroom_temp():
-    timestamps, temp, hum, tvoc, part, co2 = get_bedroom_data(datapoints)
+    timestamps, temp, hum = get_bedroom_data(datapoints)
    
     fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
@@ -339,12 +339,12 @@ def mqtt():
 @app.route('/bath')
 def bath():
     bath_data = bath_temp()
-    return render_template('simple_graph.html', bath_data=bath_data)
+    return render_template('bath.html', bath_data=bath_data)
 
 @app.route('/bedroom')
 def bedroom():
     bedgraph_data = bedroom_temp()
-    return render_template('simple_graph.html', bedgraph_data=bedgraph_data)
+    return render_template('bedroom.html', bedgraph_data=bedgraph_data)
 
 @app.route('/livingroom')
 def livingroom():
