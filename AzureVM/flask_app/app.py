@@ -12,7 +12,7 @@ datapoints = 1000
 num_ticks = 20
 
 def bath_temp():
-    timestamps, temp, hum = get_bath_data(datapoints)
+    timestamps, temp, hum, bat = get_bath_data(datapoints)
    
     fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
@@ -48,7 +48,7 @@ def bath_temp():
     return data
 
 def bedroom_temp():
-    timestamps, temp, hum = get_bedroom_data(datapoints)
+    timestamps, temp, hum, bat = get_bedroom_data(datapoints)
    
     fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
