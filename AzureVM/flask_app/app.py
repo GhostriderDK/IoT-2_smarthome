@@ -279,9 +279,17 @@ def livingroom():
 @app.route('/taend/', methods=['POST'])
 def taend():
     publish.single("sensor/stue/fan", "1", hostname="localhost")
-    return render_template('livingroom.html')
+    stue_temperature = stue_temp()
+    stue_data = stue_data_co2_tvoc_part()
+    part_air = part_in_air()
+    return render_template('livingroom.html', stue_temperature=stue_temperature, 
+                           stue_data=stue_data, part_air=part_air)
 
 @app.route('/sluk/', methods=['POST'])
 def sluk():
     publish.single("sensor/stue/fan", "0", hostname="localhost")
-    return render_template('livingroom.html')
+    stue_temperature = stue_temp()
+    stue_data = stue_data_co2_tvoc_part()
+    part_air = part_in_air()
+    return render_template('livingroom.html', stue_temperature=stue_temperature, 
+                           stue_data=stue_data, part_air=part_air)
