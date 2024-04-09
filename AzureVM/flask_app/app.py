@@ -371,3 +371,7 @@ def sluk():
     part_air = part_in_air()
     return render_template('livingroom.html', stue_temperature=stue_temperature, 
                            stue_data=stue_data, part_air=part_air)
+
+@app.route('/config')
+def config():
+    return render_template('config.html')
