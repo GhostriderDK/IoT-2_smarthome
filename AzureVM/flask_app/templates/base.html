@@ -1,73 +1,86 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  a {
+    color: white;
+  }
+</style>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %} {% endblock %} - IndeklimaKontrol</title>
-  </head>
-  <body>
-    <nav class="shadow-lg p-3 mb-5 bg-dark rounded navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <title>{% block title %} {% endblock %} - IndeklimaKontrol</title>
+</head>
+
+<body>
+  <nav class="shadow-lg p-3 mb-5 bg-dark rounded navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid ">
-        <a class="navbar-brand" href="{{ url_for('home') }}"> <em>IndeklimaKontrol</em> </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="{{ url_for('home') }}"> <em>IndeklimaKontrol</em> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-            <li class="nav-item px-2">
-              <a class="nav-link" href="{{ url_for('mqtt') }}"><strong>Overview</strong></a>
-            </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="{{ url_for('mqtt') }}"><strong>Overview</strong></a>
+          </li>
 
-            <li class="nav-item px-2">
-              <a class="nav-link" href="{{ url_for('bath') }}"><strong>Bathroom</strong></a>
-            </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="{{ url_for('bath') }}"><strong>Bathroom</strong></a>
+          </li>
 
-            <li class="nav-item px-2">
-              <a class="nav-link" href="{{ url_for('livingroom')}}"><strong>Livingroom</strong></a>
-            </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="{{ url_for('livingroom')}}"><strong>Livingroom</strong></a>
+          </li>
 
-            <li class="nav-item px-2">
-              <a class="nav-link" href="{{ url_for('bedroom')}}"><strong>Bedroom</strong></a>
-            </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="{{ url_for('bedroom')}}"><strong>Bedroom</strong></a>
+          </li>
 
-            <li class="nav-item px-2">
-              <a class="nav-link" href="{{ url_for('config')}}"><strong>Configuration</strong></a>
-            </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="{{ url_for('config')}}"><strong>Configuration</strong></a>
+          </li>
 
         </ul>
         <div class="text-end">
           <button class="btn btn-outline-light me-2" type="button">Log out</button>
         </div>
-        </div>
-    </div>
-    </nav>
-    <div class="container text-center py-2">
-      <div class="row py-lg-2">
-
-        <div class="card">
-          <div class="card-body">
-            {% block content %} {% endblock %}
-          </div>
-        </div>
-
       </div>
     </div>
+  </nav>
+  <div class="container text-center py-2">
+    <div class="row py-lg-2">
 
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <span class="text-muted small">KEA IT-Teknolog F2024 2C 6 - Alexander Gundsø, Mads Janum Magnusson, Emil Bøegh Grønning-Vogter, Jacob Rusch Svendsen.</span>
+      <div class="card">
+        <div class="card-body">
+          {% block content %} {% endblock %}
+        </div>
       </div>
-    </footer>
 
-    <!-- Optional JavaScript -->
+    </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted small">KEA IT-Teknolog F2024 2C 6 - Alexander Gundsø, Mads Janum Magnusson, Emil Bøegh
+        Grønning-Vogter, Jacob Rusch Svendsen.</span>
+    </div>
+  </footer>
 
-  </body>
+  <!-- Optional JavaScript -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>
