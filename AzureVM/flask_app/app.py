@@ -323,6 +323,14 @@ def Tvoc_co2__particle_real():
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return data
 
+# def fan():
+#     if temp > 25 and hum > 50 or if temp > 25 and co2 > 1100:
+#         # tænd blæser
+#         pass
+#     elif temp < 18 and hum < 30 or if temp < 18 and co2 < 500:
+#         #sluk blæser
+#         pass
+
 @app.route('/')
 def home():
     return render_template('index.html')

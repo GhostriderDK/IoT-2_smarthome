@@ -49,7 +49,7 @@ def bedroom_message(client, userdata, message):
     except Exception as e:
         print(f"Another error occured: {e}")
     finally:
-        conn.close
+        conn.close()
 
 def stue_message(client, userdata, message):
     query = """INSERT INTO stue (datetime, temperature, humidity, tvoc, particles, co2 ) VALUES(?, ?, ?, ?, ?, ?)"""
@@ -71,7 +71,7 @@ def stue_message(client, userdata, message):
     except Exception as e:
         print(f"Another error occured: {e}")
     finally:
-        conn.close
+        conn.close()
 
 topic_function_map = {
     "sensor/bad/json": bath_message,
