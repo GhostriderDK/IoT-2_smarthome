@@ -30,7 +30,7 @@ def get_stue_data(number_of_rows):
         except Exception as e:
             print(f"Another error occured: {e}")
         finally:
-            conn.close
+            conn.close()
 
         sleep(1)
 
@@ -61,7 +61,7 @@ def get_bath_data(number_of_rows):
         except Exception as e:
             print(f"Another error occured: {e}")
         finally:
-            conn.close
+            conn.close()
 
         sleep(1)
 
@@ -92,7 +92,7 @@ def get_bedroom_data(number_of_rows):
         except Exception as e:
             print(f"Another error occured: {e}")
         finally:
-            conn.close
+            conn.close()
 
         sleep(1)
 
