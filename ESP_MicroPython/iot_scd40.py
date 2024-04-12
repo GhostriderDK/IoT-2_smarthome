@@ -55,12 +55,12 @@ def init(i2c):
     return sen
     
 def read(sen):
-    co2, t, rh = sen.get_meas_data()
+    co2, t, rh = sen.get_meas_data()       # Læser data med get_meas_data() og putter i en tuple
     print(f"CO2 [ppm]: {co2}; T [°C]: {t}; RH [%]: {rh}")
-    #return (co2, t, rh)	# Returner tuple
-    return {				# Retuner dict
+    #return (co2, t, rh)	# Returnér tuple
+    return {				# Retunér dict
       "co2": co2,
-      "temp": t,
+      "temp": t,            # key : value
       "rh": rh
     }
 
