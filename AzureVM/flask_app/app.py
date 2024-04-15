@@ -94,8 +94,8 @@ def stue_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
-    ax1.set_xticks(tick_positions) 
+    #tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
+    #ax1.set_xticks(tick_positions) 
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
