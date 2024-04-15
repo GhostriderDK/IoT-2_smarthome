@@ -10,6 +10,7 @@ def fan():
     elif (temp[0] < 18 and hum[0] < 30) or (temp[0] < 18 and co2 < 500):
         publish.single("sensor/stue/fan", "0", hostname="localhost")
 
+print('fan script running')
 while True:
     fan()
     sleep(1)
