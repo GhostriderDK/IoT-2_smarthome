@@ -9,7 +9,71 @@ import paho.mqtt.publish as publish
 app = Flask(__name__)
 app.run(debug=True)
 datapoints = 1000
-num_ticks = 5
+num_ticks = 
+
+def bath_temp():
+    timestamps, temp, hum, bat = get_bath_data(datapoints)
+   
+    fig = Figure() 
+    ax1 = fig.add_subplot(2, 1, 1)
+    fig.subplots_adjust(bottom=0.1)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, temp, linestyle="solid", c="#11f", linewidth="1.5")
+    ax1.set_ylabel("Temp in C")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue")
+    ax1.set_xticklabels([])
+    ax1.grid(axis='y', linestyle='--')
+
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.tick_params(axis='x', which='both', rotation=90)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="solid", c="#11f", linewidth="1.5")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity in %")
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue")
+    ax2.spines["left"].set_color("blue")
+    ax2.grid(axis='y', linestyle='--')
+    
+    fig.subplots_adjust(bottom=0.3)
+    fig.patch.set_facecolor("orange")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
+
+def bedroom_temp():
+    timestamps, temp, hum, bat = get_bedroom_data(datapoints)
+   
+    fig = Figure() 
+    ax1 = fig.add_subplot(2, 1, 1)
+    fig.subplots_adjust(bottom=0.1)
+    ax1.set_facecolor("white")
+    ax1.plot(timestamps, temp, linestyle="solid", c="#11f", linewidth="1.5")
+    ax1.set_ylabel("Temp in C")
+    ax1.tick_params(axis="y", colors="blue")
+    ax1.spines["left"].set_color("blue") 
+    ax1.set_xticklabels([])
+    ax1.grid(axis='y', linestyle='--')
+
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.tick_params(axis='x', which='both', rotation=90)
+    ax2.set_facecolor("white")
+    ax2.plot(timestamps, hum, linestyle="solid", c="#11f", linewidth="1.5")
+    ax2.set_xlabel("Timestamps")
+    ax2.set_ylabel("Humidity in %")
+    ax2.tick_params(axis="x", colors="black")
+    ax2.tick_params(axis="y", colors="blue") 
+    ax2.spines["left"].set_color("blue")
+    ax2.grid(axis='y', linestyle='--')
+    
+    fig.subplots_adjust(bottom=0.3)
+    fig.patch.set_facecolor("orange")
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
 
 def stue_temp():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
@@ -35,8 +99,6 @@ def stue_temp():
     ax2.set_ylabel("Humidity in %")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
-    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
-    ax2.set_xticks(tick_positions)
     ax2.spines["left"].set_color("blue")
     ax2.grid(axis='y', linestyle='--')
     
@@ -50,16 +112,14 @@ def stue_temp():
 def stue_data_co2_tvoc_part():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
     
-    fig = Figure()
+    fig = Figure() 
     ax1 = fig.add_subplot(2, 1, 1)
-    fig.subplots_adjust(bottom=0.3)
+    fig.subplots_adjust(bottom=0.1)
     ax1.set_facecolor("white")
     ax1.plot(timestamps, tvoc, linestyle="solid", c="#11f", linewidth="1.5")
     ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
-    ax1.spines["left"].set_color("blue")
-    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
-    ax1.set_xticks(tick_positions)
+    ax1.spines["left"].set_color("blue") 
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -72,11 +132,10 @@ def stue_data_co2_tvoc_part():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
-    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
-    ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
+    
+    fig.subplots_adjust(bottom=0.3)
     fig.patch.set_facecolor("orange")
-        
     buf = BytesIO()
     fig.savefig(buf, format="png")
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
@@ -97,8 +156,6 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
-    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
-    ax.set_xticks(tick_positions)
     ax.grid(axis='y', linestyle='--')
     fig.patch.set_facecolor("orange")
     
