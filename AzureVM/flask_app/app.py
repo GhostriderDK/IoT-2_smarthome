@@ -143,7 +143,7 @@ def stue_data_co2_tvoc_part():
     ax2.set_ylabel("CO2 in ppm")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
-    tick_positions = range(0, datapoints, 1000)  
+    tick_positions = range(0, datapoints, 100)  
     ax2.set_xticks(tick_positions)
     ax2.spines["left"].set_color("blue")
     ax2.grid(axis='y', linestyle='--')
