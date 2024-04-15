@@ -96,7 +96,7 @@ def stue_temp():
     ax1.spines["left"].set_color("blue")
     tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)  
     ax1.set_xticks(tick_positions) 
-    ax1.set_xticklabels([])
+    ax1.set_xticklabels([timestamps[i] for i in tick_positions], rotation=45)
     ax1.grid(axis='y', linestyle='--')
 
     ax2 = fig.add_subplot(2, 1, 2)
