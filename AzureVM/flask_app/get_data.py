@@ -61,7 +61,7 @@ def get_bath_data(number_of_rows):
         conn.close()
 
 
-get_stue_data(10)
+get_bath_data(10)
 
 def get_bedroom_data(number_of_rows):
     query = """SELECT * FROM bedroom ORDER BY datetime DESC;"""
