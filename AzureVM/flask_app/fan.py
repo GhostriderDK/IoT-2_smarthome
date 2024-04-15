@@ -23,4 +23,4 @@ def fan():
 print('fan script running')
 while True:
     fan()
-    sleep(30)
+    sleep(10)
