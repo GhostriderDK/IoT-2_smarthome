@@ -9,7 +9,7 @@ import paho.mqtt.publish as publish
 app = Flask(__name__)
 app.run(debug=True)
 datapoints = 1000
-num_ticks = 20
+num_ticks = 30
 
 def bath_temp():
     timestamps, temp, hum, bat = get_bath_data(datapoints)
