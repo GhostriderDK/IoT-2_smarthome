@@ -141,7 +141,7 @@ def stue_data_co2_tvoc_part():
 
 def part_in_air():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(datapoints)
-    
+
     fig = Figure()
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
