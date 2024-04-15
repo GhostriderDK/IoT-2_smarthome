@@ -1,5 +1,4 @@
 import sqlite3
-from time import sleep
 
 def get_stue_data(number_of_rows):
     while True:
