@@ -38,7 +38,7 @@ def get_stue_data(number_of_rows):
             conn.close()
 
 
-get_stue_data(10)
+get_stue_data(1000)
 
 def get_bath_data(number_of_rows):
     while True:
