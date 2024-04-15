@@ -14,7 +14,7 @@ def fan():
     elif temp[0] > 25 and co2[0] > 1100:
         publish.single("sensor/stue/fan", "1", hostname="localhost")
 
-    elif temp[0] < 18 or co2 < 500:
+    elif temp[0] < 18 or co2[0] < 500:
         publish.single("sensor/stue/fan", "0", hostname="localhost")
 
     elif temp[0] < 18 or hum[0] < 30:
