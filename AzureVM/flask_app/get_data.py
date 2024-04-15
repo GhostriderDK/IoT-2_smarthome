@@ -65,7 +65,7 @@ def get_bath_data(number_of_rows):
 
 get_bath_data(10)
 
-def get_bedroom_data(number_of_rows):'
+def get_bedroom_data(number_of_rows):
     while True:
         query = """SELECT * FROM bedroom ORDER BY datetime DESC;"""
         datetimes = []
