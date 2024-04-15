@@ -7,7 +7,7 @@ def fan():
     print('temp: ' + str(temp[0]))
     print('hum: ' + str(hum[0]))
     print('co2: ' + str(co2[0]))
-    if temp[0] > 25 and hum[0] > 50:
+    if temp[0] > 25 and hum[0] > 20:
         publish.single("sensor/stue/fan", "1", hostname="localhost")
    
     elif temp[0] > 25 and co2[0] > 1100:
@@ -16,7 +16,7 @@ def fan():
     elif temp[0] < 18 and co2 < 500:
         publish.single("sensor/stue/fan", "0", hostname="localhost")
 
-    elif temp[0] < 18 and hum[0] < 30:
+    elif temp[0] < 18 and hum[0] < 10:
         publish.single("sensor/stue/fan", "0", hostname="localhost")
 
 print('fan script running')
