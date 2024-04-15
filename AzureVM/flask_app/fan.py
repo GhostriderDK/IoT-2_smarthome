@@ -4,9 +4,9 @@ from time import sleep
 
 def fan():
     timestamps, temp, hum, tvoc, part, co2 = get_stue_data(1)
-    print('temp: ' + temp[0])
-    print('hum: ' + hum[0])
-    print('co2: ' + co2[0])
+    print('temp: ' + str(temp[0]))
+    print('hum: ' + str(hum[0]))
+    print('co2: ' + str(co2[0]))
     if temp[0] > 25 and hum[0] > 50:
         publish.single("sensor/stue/fan", "1", hostname="localhost")
    
