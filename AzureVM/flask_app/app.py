@@ -170,8 +170,9 @@ def part_in_air():
     ax.tick_params(axis="x", colors="black")
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
-    tick_positions = range(0, datapoints, 1000)  
-    ax.set_xticks(tick_positions)
+    tick_positions = timestamps[::100]  
+    ax.set_xticks(range(0, len(timestamps), 100))
+    ax.set_xticklabels(tick_positions, rotation=90) 
     ax.grid(axis='y', linestyle='--')
     fig.patch.set_facecolor("orange")
     
