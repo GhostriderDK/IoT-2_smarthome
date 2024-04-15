@@ -21,7 +21,7 @@ def get_stue_data(number_of_rows):
                 tvoc.append(row[3])
                 particles.append(row[4])
                 co2.append(row[5])
-            return datetimes, temperatures, humidities, tvoc, particles, co2         
+                     
         except sqlite3.Error as sql_e:
             print(f"sqlite error occurred: {sql_e}")
             conn.rollback()
@@ -30,6 +30,7 @@ def get_stue_data(number_of_rows):
             print(f"Another error occured: {e}")
         finally:
             conn.close()
+            return datetimes, temperatures, humidities, tvoc, particles, co2
 
 
 get_stue_data(10)
