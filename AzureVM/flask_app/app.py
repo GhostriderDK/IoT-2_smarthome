@@ -8,7 +8,7 @@ import paho.mqtt.publish as publish
 
 app = Flask(__name__)
 app.run(debug=True)
-datapoints = 100
+datapoints = 1000
 num_ticks = 20
 
 def bath_temp():
