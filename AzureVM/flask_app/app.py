@@ -22,8 +22,8 @@ def bath_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
-    #tick_positions = range(0, datapoints, datapoints // num_ticks)  
-    #ax1.set_xticks(tick_positions) 
+    tick_positions = range(0, datapoints, 100)  
+    ax1.set_xticks(tick_positions) 
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -35,8 +35,8 @@ def bath_temp():
     ax2.set_ylabel("Humidity in %")
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
-    #tick_positions = range(0, datapoints, datapoints // num_ticks)
-    #ax2.set_xticks(tick_positions)
+    tick_positions = range(0, datapoints, 100)  
+    ax2.set_xticks(tick_positions
     ax2.spines["left"].set_color("blue")
     ax2.grid(axis='y', linestyle='--')
     
