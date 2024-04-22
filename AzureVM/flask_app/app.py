@@ -22,6 +22,8 @@ def bath_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax1.set_xticks(tick_positions)
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -34,6 +36,8 @@ def bath_temp():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
     
     fig.subplots_adjust(bottom=0.3)
@@ -54,6 +58,8 @@ def bedroom_temp():
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
     ax1.spines["left"].set_color("blue") 
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax1.set_xticks(tick_positions)
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -66,6 +72,8 @@ def bedroom_temp():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue") 
     ax2.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
     
     fig.subplots_adjust(bottom=0.3)
@@ -85,7 +93,9 @@ def stue_temp():
     ax1.plot(timestamps, temp, linestyle="solid", c="#11f", linewidth="1.5")
     ax1.set_ylabel("Temp in C")
     ax1.tick_params(axis="y", colors="blue")
-    ax1.spines["left"].set_color("blue") 
+    ax1.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax1.set_xticks(tick_positions) 
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -98,6 +108,8 @@ def stue_temp():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
     
     fig.subplots_adjust(bottom=0.3)
@@ -117,7 +129,9 @@ def stue_data_co2_tvoc_part():
     ax1.plot(timestamps, tvoc, linestyle="solid", c="#11f", linewidth="1.5")
     ax1.set_ylabel("TVOC in ppb")
     ax1.tick_params(axis="y", colors="blue")
-    ax1.spines["left"].set_color("blue") 
+    ax1.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax1.set_xticks(tick_positions) 
     ax1.set_xticklabels([])
     ax1.grid(axis='y', linestyle='--')
 
@@ -130,6 +144,8 @@ def stue_data_co2_tvoc_part():
     ax2.tick_params(axis="x", colors="black")
     ax2.tick_params(axis="y", colors="blue")
     ax2.spines["left"].set_color("blue")
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax2.set_xticks(tick_positions)
     ax2.grid(axis='y', linestyle='--')
     
     fig.subplots_adjust(bottom=0.3)
