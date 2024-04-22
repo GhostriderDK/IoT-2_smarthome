@@ -2,3 +2,4 @@ AzureVM/flask_app/database/data.db
 AzureVM/flask_app/database/sensor_data.db
 AzureVM/flask_app/venv/*
 AzureVM/flask_app/__pycache__/*
+venv
