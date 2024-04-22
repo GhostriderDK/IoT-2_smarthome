@@ -171,6 +171,8 @@ def part_in_air():
     ax.tick_params(axis="y", colors="blue")
     ax.spines["left"].set_color("blue")
     ax.grid(axis='y', linestyle='--')
+    tick_positions = range(0, len(timestamps), len(timestamps) // num_ticks)
+    ax.set_xticks(tick_positions)
     fig.patch.set_facecolor("orange")
     
     buf = BytesIO()
