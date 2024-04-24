@@ -384,7 +384,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        conn = sqlite3.connect('users.db')
+        conn = sqlite3.connect('database/users.db')
         cursor = conn.cursor()
         
         # Check if the username and password match
