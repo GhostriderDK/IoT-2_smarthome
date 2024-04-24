@@ -387,19 +387,15 @@ def login():
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
         
-        # Check if the username exists in the database
-        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        # Check if the username and password match
+        cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
         user = cursor.fetchone()
         
         if user:
-            # Check if the provided password matches the stored password
-            if check_password_hash(user[1], password):
-                session['username'] = username
-                return redirect(url_for('home'))
-            else:
-                error = 'Invalid password. Please try again.'
+            session['username'] = username
+            return redirect(url_for('home'))
         else:
-            error = 'Username does not exist.'
+            error = 'Invalid username or password. Please try again.'
         
         conn.close()
     return render_template('login.html', error=error)
