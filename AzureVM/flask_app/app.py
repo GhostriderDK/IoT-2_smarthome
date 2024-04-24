@@ -4,9 +4,11 @@ from matplotlib.figure import Figure
 import matplotlib.colors as mcolors
 from flask import Flask, render_template, redirect, url_for, request, session
 from get_data import *
+import secrets
 import paho.mqtt.publish as publish
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 app.run(debug=True)
 datapoints = 1000
 num_ticks = 20
