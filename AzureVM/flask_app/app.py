@@ -2,7 +2,7 @@ import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 import matplotlib.colors as mcolors
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, session
 from get_data import *
 import paho.mqtt.publish as publish
 
