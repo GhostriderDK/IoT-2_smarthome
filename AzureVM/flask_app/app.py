@@ -2,7 +2,7 @@ import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 import matplotlib.colors as mcolors
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 from get_data import *
 import paho.mqtt.publish as publish
 
@@ -376,3 +376,30 @@ def sluk():
 @app.route('/config')
 def config():
     return render_template('config.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        
+        # Check if the username exists in the database
+        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        user = cursor.fetchone()
+        
+        if user:
+            # Check if the provided password matches the stored password
+            if check_password_hash(user[1], password):
+                session['username'] = username
+                return redirect(url_for('home'))
+            else:
+                error = 'Invalid password. Please try again.'
+        else:
+            error = 'Username does not exist.'
+        
+        conn.close()
+    return render_template('login.html', error=error)
