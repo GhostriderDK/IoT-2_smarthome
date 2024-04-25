@@ -389,7 +389,6 @@ def login():
         conn = sqlite3.connect('database/users.db')
         cursor = conn.cursor()
         
-        # Check if the username and password match
         cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
         user = cursor.fetchone()
         
