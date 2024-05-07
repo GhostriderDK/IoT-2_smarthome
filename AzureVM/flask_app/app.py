@@ -2,16 +2,50 @@ import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 import matplotlib.colors as mcolors
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, logout_user
+from flask_bcrypt import Bcrypt
 from get_data import *
 import secrets
 import paho.mqtt.publish as publish
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
+
+bcrypt = Bcrypt(app) 
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+app.config["SECRET_KEY"] = "testkey"
+db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+class Users(UserMixin, db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.String(250), unique=True,
+						nullable=False)
+	password = db.Column(db.String(250),
+						nullable=False)
+
+db.init_app(app)
+
+
+with app.app_context():
+	db.create_all()
+
 app.run(debug=True)
 datapoints = 1000
 num_ticks = 20
+
+def user_exists(username):
+    conn = sqlite3.connect('database/users.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM users WHERE username = ?", (username,))
+    user = c.fetchone()
+    conn.close()
+    return user
 
 def bath_temp():
     timestamps, temp, hum, bat = get_bath_data(datapoints)
@@ -379,8 +413,63 @@ def sluk():
 def config():
     return render_template('config.html')
 
+
+@login_manager.user_loader
+def loader_user(user_id):
+    return Users.query.get(user_id)
+
+
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        user = Users(username=request.form.get("username"),
+                     password=request.form.get("password"))
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("login"))
+    return render_template("sign_up.html")
+
+@app.route('/registerbcrypted', methods=['GET', 'POST'])
+def registerbcrypt():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if user_exists(username):
+            flash('Username already exists', 'error')
+            return redirect(url_for('registerbcrypt'))
+
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+        conn = sqlite3.connect('database/users.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+        conn.commit()
+        conn.close()
+
+        flash('Registration successful. Please login.', 'success')
+        return redirect(url_for('login3'))
+    return render_template('sign_up.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
+
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and bcrypt.check_password_hash(users[username], password):
+            session['username'] = username
+            return redirect(url_for('home'))
+        else:
+            return render_template('login.html', error='Invalid username or password')
+    return render_template('login.html')
+
+
+@app.route('/login2', methods=['GET', 'POST'])
+def login2():
     error = None
     if request.method == 'POST':
         username = request.form['username']
@@ -394,9 +483,44 @@ def login():
         
         if user:
             session['username'] = username
-            return redirect(url_for('home'))
+            return redirect(url_for('home2'))
         else:
             error = 'Invalid username or password. Please try again.'
         
         conn.close()
     return render_template('login.html', error=error)
+
+@app.route('/login3', methods=['GET', 'POST'])
+def login3():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        user = user_exists(username)
+
+        if user and bcrypt.check_password_hash(user[2], password):
+            flash('Login successful', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Invalid username or password', 'error')
+            return redirect(url_for('login'))
+
+    return render_template('login.html')
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
+@app.route('/2')
+def home2():
+    return render_template('index2.html')
+
+@app.route('/3') 
+def index3(): 
+    password = 'password'
+    hashed_password = bcrypt.generate_password_hash (password).decode('utf-8') 
+    is_valid = bcrypt.check_password_hash (hashed_password, password) 
+    return f"Password: {password}<br>Hashed Password: {hashed_password}<br>Is Valid: {is_valid}" 
+   
+

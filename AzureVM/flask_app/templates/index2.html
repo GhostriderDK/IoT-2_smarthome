@@ -2,8 +2,6 @@
 
 {% block content %}
     <h1>{% block title %} Control Panel {% endblock %}</h1>
-
-    {% if current_user.is_authenticated %}
     <h1>You are logged in</h1>
     
 
@@ -13,9 +11,5 @@
           <a href="/logout">Logout</a>
 
     <img width="30%" src="static/8-p3cKNJ.jpg">
-
-    {% else %}
-    <h1>You are not logged in</h1>
-    {% endif %}
 {% endblock %}
 
